@@ -1,0 +1,301 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+/* wrapper */
+#wrapper {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* main */
+#main {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: 0 5%;
+  /* background: radial-gradient(circle, transparent, rgba(0, 0, 0, 1)),
+    url("./assets/main_bg.jpg") center/cover no-repeat; */
+}
+
+/* header */
+#header {
+  width: 100%;
+}
+/* nav */
+
+#header-nav {
+  width: 1280px;
+  height: 70px;
+  margin: 0 auto;
+  margin-bottom: 170px;
+  padding: 0px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.header-nav-leftBox {
+  display: flex;
+  gap: 40px;
+}
+.header-nav-leftBox .active {
+  font-weight: bold;
+}
+.header-nav-leftBox-logo {
+  width: 176px;
+  height: 47px;
+  background-image: url("./assets/logos_netflix.png");
+  object-fit: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.header-nav-leftBox-menu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  font-size: 22px;
+}
+
+.header-nav-leftBox-menu li {
+  position: relative;
+}
+.header-nav-leftBox-menu li > .lnb {
+  width: 160px;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 105%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 0px 8px;
+  opacity: 0;
+  overflow: hidden;
+}
+.header-nav-leftBox-menu li > .lnb a {
+  display: inline-block;
+  color: #fff;
+  margin: 20px 0;
+  &:hover {
+    color: #db202c;
+  }
+}
+
+.header-nav-rightBox {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+/* translate */
+.translater {
+  position: relative;
+  display: flex;
+  width: 188px;
+  height: 52px;
+  border: 1px solid #afafaf;
+  padding-left: 5px;
+  padding-right: 5px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+
+#translate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 188px;
+  height: 52px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 22px;
+  font-weight: 700;
+  appearance: none;
+  background: url("./assets/Translate_arrow.png") no-repeat right 24px center;
+  cursor: pointer;
+}
+#translate:focus {
+  outline: none;
+}
+#translate option {
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  font-size: 22px;
+  background-color: #db202c;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/* main-slide */
+#main-slide {
+  width: 100%;
+}
+.main-slide-text {
+  width: 1280px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  margin-bottom: 150px;
+  color: #fff;
+}
+
+.main-slide-text-title {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  font-size: 48px;
+  font-weight: bold;
+}
+.main-slide-text-descr {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  font-size: 32px;
+}
+.main-slide-text-buttonBox {
+  width: 420px;
+  height: 76px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+.main-slide-text-buttonBox button {
+  width: 420px;
+  height: 76px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #db202c;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.main-slide-text-buttonBox i {
+  position: absolute;
+  right: 120px;
+  top: 50%;
+  transform: translateY(-40%);
+}
+
+/* cards */
+#cards {
+  width: 100%;
+}
+
+.cardsBox {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.cardsBox-card {
+  width: 292px;
+  height: 420px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: radial-gradient(transparent, rgba(0, 0, 0, 0.4));
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 7px;
+}
+.cardsBox-card-top-age.categori_all {
+  width: 35px;
+  height: 35px;
+  background-image: url("./assets/age_All.png");
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+.cardsBox-card-top-age.categori_18 {
+  width: 38px;
+  height: 34px;
+  background-image: url("./assets/age_18.png");
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+
+.cardsBox-card.bg_01 {
+  width: 292px;
+  height: 420px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 1)),
+    url("./assets/place.png") center/cover no-repeat;
+}
+.cardsBox-card.bg_02 {
+  width: 292px;
+  height: 420px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 1)),
+    url("./assets/insideout.png") center/cover no-repeat;
+}
+.cardsBox-card.bg_03 {
+  width: 292px;
+  height: 420px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 1)),
+    url("./assets/lilpa.png") center/cover no-repeat;
+}
+
+.cardsBox-card-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardsBox-card-bottom-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+.cardsBox-card-bottom-popular {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+.cardsBox-card-bottom-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardsBox-card-bottom-footer-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 0.5px solid #ccc;
+  border-radius: 2px;
+  width: 93px;
+  height: 27px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+.cardsBox-card-bottom-footer-left {
+  color: #e2e2e2;
+}
+
+.cardsBox-card-bottom-footer-right-heart > i {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background-image: url("./assets/mdi_heart.png");
+  object-fit: contain;
+  background-repeat: no-repeat;
+}

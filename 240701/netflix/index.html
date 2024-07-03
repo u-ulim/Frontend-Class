@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETFLIX</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <main id="main">
+        <header id="header">
+          <nav id="header-nav">
+            <div class="header-nav-leftBox">
+              <div class="header-nav-leftBox-logo"></div>
+
+              <ul class="header-nav-leftBox-menu">
+                <li class="active"><a href="/01">예능</a></li>
+                <li><a href="/02">애니메이션</a></li>
+                <li><a href="/03">영화</a></li>
+                <li><a href="/04">드라마</a></li>
+              </ul>
+            </div>
+            <div class="header-nav-rightBox">
+              <div class="translater">
+                <span>
+                  <img src="./assets/translate_symbol.png" alt="translate" />
+                </span>
+                <form action="post">
+                  <select name="translate" id="translate">
+                    <option value="korean">한국어</option>
+                    <option value="english">English</option>
+                  </select>
+                </form>
+              </div>
+              <div class="login">로그인</div>
+            </div>
+          </nav>
+        </header>
+        <section id="main-slide">
+          <div class="main-slide-text">
+            <div class="main-slide-text-title">
+              영화, 시리즈 등을 무제한으로
+            </div>
+            <div class="main-slide-text-descr">
+              어디서나 자유롭게 시청하세요. 해지는 언제든 가능합니다.
+            </div>
+            <div class="main-slide-text-buttonBox">
+              <button>시작하기</button>
+              <i><img src="./assets/Start_arrow.png" alt="Start_arrow" /></i>
+            </div>
+          </div>
+        </section>
+        <section id="cards">
+          <ul class="cardsBox">
+            <li class="cardsBox-card">
+              <div class="cardsBox-card-top">
+                <div class="cardsBox-card-top-age">ALL</div>
+              </div>
+              <div class="cardsBox-card-bottom">
+                <div class="cardsBox-card-bottom-title">
+                  더 콰이어트플레이스2
+                </div>
+                <div class="cardsBox-card-bottom-popular">
+                  20,30 연령층에게 인기 많아요
+                </div>
+                <div class="cardsBox-card-bottom-footer">
+                  <div class="cardsBox-card-bottom-footer-left">84%</div>
+                  <div class="cardsBox-card-bottom-footer-right">
+                    <div class="cardsBox-card-bottom-footer-right-heart">
+                      <i>Heart</i>
+                    </div>
+                    <div class="cardsBox-card-bottom-footer-right-num">
+                      <i>999</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="cardsBox-card">
+              <div class="cardsBox-card-top">
+                <div class="cardsBox-card-top-age">인사이드 아웃</div>
+              </div>
+              <div class="cardsBox-card-bottom">
+                <div class="cardsBox-card-bottom-title">Title</div>
+                <div class="cardsBox-card-bottom-popular">Popular</div>
+                <div class="cardsBox-card-bottom-footer">
+                  <div class="cardsBox-card-bottom-footer-left">99%</div>
+                  <div class="cardsBox-card-bottom-footer-right">
+                    <div class="cardsBox-card-bottom-footer-right-heart">
+                      <i>Heart</i>
+                    </div>
+                    <div class="cardsBox-card-bottom-footer-right-num">
+                      <i>999</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="cardsBox-card">
+              <div class="cardsBox-card-top">
+                <div class="cardsBox-card-top-age">ALL</div>
+              </div>
+              <div class="cardsBox-card-bottom">
+                <div class="cardsBox-card-bottom-title">TITLE</div>
+                <div class="cardsBox-card-bottom-popular">Popular</div>
+                <div class="cardsBox-card-bottom-footer">
+                  <div class="cardsBox-card-bottom-footer-left">99%</div>
+                  <div class="cardsBox-card-bottom-footer-right">
+                    <div class="cardsBox-card-bottom-footer-right-heart">
+                      <i>Heart</i>
+                    </div>
+                    <div class="cardsBox-card-bottom-footer-right-num">
+                      <i>999</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

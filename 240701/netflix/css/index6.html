@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/ccc6dd49b3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    body {
+      background-color: rgb(255, 244, 125);
+    }
+    .gnb {
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      a {
+        display: block;
+        font-size: 40px;
+        color: rgb(102, 102, 102) b3b;
+        margin: 10px 0;
+        padding-left: 30px;
+        position: relative;
+        /* 전후문자 선택자 폰트어썸 사용하기*/
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          content: "\f054";
+          font-family: fontawesome;
+          font-size: 24px;
+        }
+      }
+      &:hover a {
+        opacity: 0.3;
+      }
+    }
+    .gnb a:hover {
+      opacity: 1;
+    }
+  </style>
+  <body>
+    <div class="gnb">
+      <a href="#none">New Arrivals</a>
+      <a href="#none">Summer Collection</a>
+      <a href="#none">Winter Collection</a>
+      <a href="#none">Special Offers</a>
+      <a href="#none">Trends</a>
+    </div>
+  </body>
+</html>

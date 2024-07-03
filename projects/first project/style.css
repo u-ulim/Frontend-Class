@@ -1,0 +1,13 @@
+/* RULE */
+/* 01. 시맨틱 태그 */
+/* 02. CSS 변수 사용 */
+/* 03. 네스팅 기능 이용 */
+/* 04. 주석 활용 */
+/* 05. HTML은 -사용하여 네이밍 */
+/* 06. Git 사용해서 커밋하기 */
+
+/* GOOGLE FONT _noto sans kr*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+:root {
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        counter-increment: rint;
+      }
+      p::before {
+        content: counter(rint) ".";
+      }
+      p::after {
+        content: " - " attr(data-page) " page";
+      }
+      P::first-letter {
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lorem Ipsum</h1>
+    <p data-page="52">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis labore
+      aspernatur cupiditate incidunt ab earum assumenda reprehenderit architecto
+      mollitia natus delectus fuga impedit porro, quam quia aperiam et, totam
+      culpa. Excepturi eligendi ab, accusantium architecto, repellat inventore
+      labore adipisci dolor, dolorem eaque eveniet aspernatur alias ipsam
+      repudiandae obcaecati! Quae laudantium consequatur cupiditate laborum
+      repudiandae architecto cum recusandae atque vero placeat.
+    </p>
+    <p data-page="273">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
+      perspiciatis, illo accusamus inventore neque enim rerum animi cumque
+      atque. Reiciendis illo iusto est fuga neque totam, placeat iure sapiente
+      ullam. Tenetur alias cum autem. Nemo voluptas illo, maiores iusto ipsa
+      delectus suscipit quibusdam. Voluptas ullam dignissimos, mollitia atque
+      quibusdam vero esse voluptatum voluptatem laudantium corporis? Et error
+      repellendus vitae optio. Asperiores autem consequatur voluptatem cumque
+      labore nulla. Fugiat, sint nisi libero doloremque reprehenderit
+      dignissimos fugit rem ipsum! Provident quisquam ullam temporibus molestiae
+      nostrum, pariatur repellendus suscipit quaerat. Animi, odio eius. Totam
+      autem beatae id voluptatibus qui possimus sapiente veritatis nisi quae
+      odit rerum deserunt ipsum, ab rem iure illo doloribus asperiores expedita
+      sed est corporis eius natus eum fuga. Est.
+    </p>
+  </body>
+</html>

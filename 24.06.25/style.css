@@ -1,0 +1,47 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* top_navigation */
+
+#top_navigation {
+  width: 1098px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.elft_gnb_first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 84px;
+}
+
+.topNav {
+  display: flex;
+  gap: 18px;
+}
+
+.topNav li a {
+  color: #d1d1d1;
+}
+
+.topNav li:first-child a {
+  color: #000;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.list_first,
+.list_second {
+  width: inherit;
+  display: flex;
+  justify-content: space-around;
+}
