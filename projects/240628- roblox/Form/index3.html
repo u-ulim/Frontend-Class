@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      fieldset {
+        margin: 0 auto;
+        width: 300px;
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+      legend {
+        color: rgb(156, 8, 8);
+      }
+      label {
+        color: #fff;
+      }
+      div {
+        width: 220px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <fieldset>
+        <legend>학사정보 조회서비스</legend>
+        <div>
+          <label for="name">이름</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div>
+          <label for="number">학번</label>
+          <input type="number" name="number" id="number" />
+        </div>
+        <div>
+          <label for="class">학과</label>
+          <input type="text" name="class" id="class" />
+        </div>
+      </fieldset>
+      <button>조회하기</button>
+    </form>
+  </body>
+</html>
