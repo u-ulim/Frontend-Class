@@ -774,7 +774,7 @@ html {
 }
 
 /************ MOBILE *************/
-@media screen and (max-width: 1280px) and (min-width: 360px) {
+@media screen and (max-width: 1280px) {
   /* M HEADER */
   #header {
     #nav {
