@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="box.css" />
+    <!-- FONT AWESOME -->
+    <script
+      src="https://kit.fontawesome.com/ccc6dd49b3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="./scripts/header.js"></script>
+    <script defer src="./scripts/main.js"></script>
+    <script defer src="./scripts/career.js"></script>
+    <script defer src="./scripts/skill.js"></script>
+    <script defer src="./scripts/outro.js"></script>
+    <script defer src="./scripts/vision.js"></script>
+  </head>
+  <body>
+    <!-- WRAPPER -->
+    <div id="wrapper">
+      <!-- HEADER -->
+      <header id="header">
+        <nav id="nav">
+          <a href="#main">
+            <div class="logo">LOGO</div>
+          </a>
+
+          <ul class="header__gnb">
+            <li>
+              <a href="#main">자기소개</a>
+            </li>
+            <li>
+              <a href="#career">경력</a>
+            </li>
+            <li>
+              <a href="#skill">기술</a>
+            </li>
+            <li>
+              <a href="#vision">비전</a>
+            </li>
+            <li>
+              <a href="#outro">마무리</a>
+            </li>
+          </ul>
+
+          <!-- MOBILE GNB -->
+          <ul class="mobile-header__gnb">
+            <li>
+              <a href="#main">자기소개</a>
+            </li>
+            <li>
+              <a href="#career">경력</a>
+            </li>
+            <li>
+              <a href="#skill">기술</a>
+            </li>
+            <li>
+              <a href="#vision">비전</a>
+            </li>
+            <li>
+              <a href="#outro">마무리</a>
+            </li>
+          </ul>
+          <!-- MOBILE TRIGGER -->
+          <div class="trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <!-- MOBILE TRIGGER END-->
+
+          <!-- MOBILE GNB END -->
+        </nav>
+      </header>
+      <!-- HEADER END -->
+
+      <!-- MAIN -->
+      <main id="main">
+        <ul class="main__slides">
+          <li class="main__slide">
+            <div class="main__slide__text-box">
+              <h1 class="main__slide__text-title"></h1>
+              <p class="main__slide__text-desc"></p>
+              <div class="main__slide__pagination">
+                <div class="main__slide__pagination__num">
+                  <p>01</p>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <p>03</p>
+                </div>
+                <div class="main__slide__pagination__arrows">
+                  <i id="slide-left-arrow" class="fa-solid fa-chevron-left"></i>
+                  <i
+                    id="slide-right-arrow"
+                    class="fa-solid fa-chevron-right"
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="main__slide__img-box"></div>
+          </li>
+        </ul>
+      </main>
+      <!-- MAIN END -->
+
+      <!-- CAREER -->
+      <section id="career">
+        <div class="career-wrapper">
+          <article class="career__heading">
+            <h1 class="career__heading__title">Career</h1>
+            <p class="career__heading__title-sub">현대기획 / 기획</p>
+          </article>
+          <article class="career__footer">
+            <div class="career__footer__img"></div>
+            <div class="career__footer__description">
+              <div class="career__footer__description__heading">
+                <span>D</span>EVELOPMENT <span>K</span>NOCK
+              </div>
+              <p class="career__footer__description__sub-heading">
+                성장의 문을 열다
+              </p>
+              <ul class="career__footer__description__info">
+                <li>
+                  <h3>재직기간</h3>
+                  <p>2년 1개월</p>
+                </li>
+                <li>
+                  <h3>업무</h3>
+                  <p>기획 및 미팅</p>
+                </li>
+                <li>
+                  <h3>성과</h3>
+                  <p>성사율 +10%</p>
+                </li>
+              </ul>
+            </div>
+          </article>
+          <div class="career__circle-text"></div>
+        </div>
+      </section>
+      <!-- CAREER END -->
+
+      <!-- SKILL -->
+      <section id="skill">
+        <div class="skill-wrapper">
+          <article class="skill__heading">
+            <h1 class="skill__heading__title">Skill</h1>
+            <p class="skill__heading__title-sub">조금 알거나, 배우고 싶어요!</p>
+          </article>
+          <ul class="skill__icons">
+            <li>
+              <div class="box">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side bottom"></div>
+              </div>
+              <span class="skill__icon-text">HTML</span>
+              <p class="skill-icon">
+                <img src="./assets/skill/icon_HTML.svg" />
+              </p>
+            </li>
+            <li>
+              <div class="box">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side bottom"></div>
+              </div>
+              <span class="skill__icon-text">CSS</span>
+              <p class="skill-icon">
+                <img src="./assets/skill/icon_CSS.svg" />
+              </p>
+            </li>
+            <li>
+              <div class="box">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side bottom"></div>
+              </div>
+              <span class="skill__icon-text">JS</span>
+              <p class="skill-icon">
+                <img src="./assets/skill/icon_JS.svg" />
+              </p>
+            </li>
+            <li>
+              <div class="box">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side bottom"></div>
+              </div>
+              <span class="skill__icon-text">REACT</span>
+              <p class="skill-icon">
+                <img src="./assets/skill/icon_REACT.svg" />
+              </p>
+            </li>
+            <li>
+              <div class="box">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side bottom"></div>
+              </div>
+              <span class="skill__icon-text">NODE</span>
+              <p class="skill-icon">
+                <img src="./assets/skill/icon_NODE.svg" />
+              </p>
+            </li>
+            <li>
+              <div class="box">
+                <div class="side front"></div>
+                <div class="side back"></div>
+                <div class="side left"></div>
+                <div class="side right"></div>
+                <div class="side top"></div>
+                <div class="side bottom"></div>
+              </div>
+              <span class="skill__icon-text">NEXT</span>
+              <p class="skill-icon">
+                <img src="./assets/skill/icon_NEXT.svg" />
+              </p>
+            </li>
+          </ul>
+          <article class="skill__footer">
+            <div class="skill__footer__img"></div>
+            <div class="skill__footer__description">
+              <h3 class="skill__footer__descript__heading"></h3>
+              <ul class="skill__footer__descript__contents"></ul>
+            </div>
+          </article>
+          <div class="skill__3DBox-wrapper">
+            <div class="skill__3DBox">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SKILL END -->
+
+      <!-- VISION -->
+      <section id="vision">
+        <div class="vision__wrapper">
+          <ul class="vision__items">
+            <li class="vision__item img1">
+              <div class="vision__item__wrapper">
+                <h1 class="vision__item-title">변화를 좋아하는 🥰</h1>
+                <button id="vision__item__exchange-btn">더보기</button>
+                <div id="vision__item__exchange-modal-box">
+                  <div class="modal-contents">
+                    <h1>CHANGE</h1>
+                    <span id="close-exchange">
+                      <i class="fa-solid fa-xmark">X</i>
+                    </span>
+                    <p>
+                      새로운 언어와 프레임워크, 도구들이 끊임없이 배우고
+                      적응하는 능력이 중요하다고 생각해요! 처음에는 하나의
+                      언어나 기술에만 집중했지만, 점차 다양한 기술들을 배우고,
+                      그것들을 실제 프로젝트에 적용하므로써 재미를 느껴요
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="vision__item img2">
+              <div class="vision__item__wrapper">
+                <h1 class="vision__item-title">커뮤니케이션 🥳</h1>
+                <button id="vision__item__comuni-btn">더보기</button>
+                <div id="vision__item__comuni-modal-box">
+                  <div class="modal-contents">
+                    <h1>COMMUNICATION</h1>
+                    <span id="close-comuni">
+                      <i class="fa-solid fa-xmark">X</i>
+                    </span>
+                    <p>
+                      때로는 기술적인 문제보다 사람 간의 오해나 갈등이 더 큰
+                      장애물이 될 수 있습니다. 개발 공부를 하면서, 팀원들의
+                      의견을 경청하고 상대방의 입장을 이해하려는 노력이 얼마나
+                      중요한지 깨닫게 되었습니다
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="vision__item img3">
+              <div class="vision__item__wrapper">
+                <h1 class="vision__item-title">먼저 제안하는 🧐</h1>
+                <button id="vision__item__propose-btn">더보기</button>
+                <div id="vision__item__propose-modal-box">
+                  <div class="modal-contents">
+                    <h1>PROPOSE</h1>
+                    <span id="close-propose">
+                      <i class="fa-solid fa-xmark">X</i>
+                    </span>
+                    <p>
+                      선제안은 혁신적인 아이디어를 발굴하고 적용하는 데 중요한
+                      역할을 합니다. 여러가지 기술을 제안함으로써 기존의 문제를
+                      효과적으로 해결할 수 있습니다!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- VISION END -->
+
+      <!-- OUTRO -->
+      <section id="outro">
+        <div class="outro__wrapper">
+          <article class="outro__heading__flow">
+            <p class="outro__heading__flow-right">
+              THANKS FOR VIEWING <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span>
+              THANKS FOR VIEWING <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span>
+              THANKS FOR VIEWING <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span>
+            </p>
+            <p class="outro__heading__flow-left">
+              THANKS FOR VIEWING <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span>
+              THANKS FOR VIEWING <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span>
+              THANKS FOR VIEWING <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span> THANKS FOR VIEWING
+              <span>MY PROFILE!</span>
+            </p>
+          </article>
+          <article class="outro__footer">
+            <div class="iframe__wrapper">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/m6pTbEz4w3o?si=ACgc4BbkTOO0JPey"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </article>
+          <div class="outro__video-player">
+            <div class="outro__video-player__circle">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- OUTRO END -->
+    </div>
+    <!-- WRAPPER END -->
+  </body>
+</html>
