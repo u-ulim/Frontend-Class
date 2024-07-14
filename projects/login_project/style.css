@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 240px;
+  gap: 120px;
   position: relative;
   padding: 30px;
   width: 100%;
@@ -31,13 +31,21 @@
       gap: 15px;
       position: relative;
       width: 200px;
-      padding: 10px 15px;
-      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px 15px;
       cursor: pointer;
-      transition: 0.5s;
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        z-index: 0;
+        transition: 0.5s;
+      }
+
       h3 {
         font-size: 14px;
-        color: #a1a1a1;
+        color: #c2c2c2;
         transition: 0.5s;
       }
       p {
@@ -46,15 +54,64 @@
         transition: 0.5s;
       }
       &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        img {
+          background-color: rgba(255, 255, 255, 0.2);
+          z-index: 0;
+        }
         h3 {
           font-size: 14px;
-          color: #adacac;
+          color: #d5d5d5;
+          z-index: 1;
+          transform: scale(1.02);
         }
         p {
           font-size: 18px;
           color: #fcfcfc;
+          z-index: 1;
+          transform: scale(1.02);
         }
+      }
+      &:nth-child(1) {
+        background: radial-gradient(
+            rgba(35, 37, 39, 0.7),
+            rgba(35, 37, 39, 0.7)
+          ),
+          url("./img/메이플.jpg") center / cover no-repeat;
+      }
+      &:nth-child(2) {
+        background: radial-gradient(
+            rgba(35, 37, 39, 0.7),
+            rgba(35, 37, 39, 0.7)
+          ),
+          url("./img/카트라이더.jpg") center / cover no-repeat;
+      }
+      &:nth-child(3) {
+        background: radial-gradient(
+            rgba(35, 37, 39, 0.7),
+            rgba(35, 37, 39, 0.7)
+          ),
+          url("./img/클로저스.jpg") center / cover no-repeat;
+      }
+      &:nth-child(4) {
+        background: radial-gradient(
+            rgba(35, 37, 39, 0.7),
+            rgba(35, 37, 39, 0.7)
+          ),
+          url("./img/크레이지아케이드.png") center / cover no-repeat;
+      }
+      &:nth-child(5) {
+        background: radial-gradient(
+            rgba(35, 37, 39, 0.7),
+            rgba(35, 37, 39, 0.7)
+          ),
+          url("./img/마비노기영웅전.jpg") center / cover no-repeat;
+      }
+      &:nth-child(6) {
+        background: radial-gradient(
+            rgba(35, 37, 39, 0.7),
+            rgba(35, 37, 39, 0.7)
+          ),
+          url("./img/v4.jpg") center / cover no-repeat;
       }
     }
   }
