@@ -1,0 +1,142 @@
+@import url("./reset.css");
+
+header {
+  background: var(--main-bgColor);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  nav {
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      img {
+        filter: invert();
+      }
+    }
+    .gnb {
+      ul {
+        display: flex;
+        gap: 10px;
+        li {
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+    .sns {
+      display: flex;
+      gap: 20px;
+      text-align: center;
+      a {
+        color: #fff;
+      }
+    }
+    .trigger {
+      display: none;
+    }
+  }
+}
+
+/* MAX 데스크탑 사이즈가 제일 높은 순으로, */
+/* ERROR */
+/* @media screen and (max-width: 360px) {
+  header {
+    
+  }
+} */
+
+@media screen and (max-width: 780px) {
+  header {
+    height: auto;
+    nav {
+      width: 100%;
+      flex-direction: column;
+      position: relative;
+      .logo {
+        padding: 10px;
+      }
+      .gnb {
+        ul {
+          display: none;
+          flex-direction: column;
+          text-align: center;
+          border-top: 1px solid rbba(0, 0, 0, 0.1);
+          li {
+            a {
+              display: block;
+              padding: 8px;
+            }
+          }
+          &.on {
+            display: flex;
+          }
+        }
+      }
+      .sns {
+        display: none;
+        justify-content: center;
+        padding: 8px;
+        a {
+          color: #222;
+        }
+        &.on {
+          display: flex;
+        }
+      }
+
+      .trigger {
+        display: block;
+        width: 25px;
+        height: 15px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        span {
+          width: 100%;
+          height: 1px;
+          background-color: #fff;
+          position: absolute;
+          transition: all 0.3s;
+          &:nth-child(1) {
+            top: 0;
+          }
+          &:nth-child(2) {
+            top: 50%;
+          }
+          &:nth-child(3) {
+            top: 100%;
+          }
+        }
+        &.active span:nth-child(1) {
+          top: 50%;
+          transform: rotate(45deg);
+        }
+        &.active span:nth-child(2) {
+          transform: rotate(45deg);
+          opacity: 0;
+        }
+        &.active span:nth-child(3) {
+          top: 50%;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+/* MIN 데스크탑 사이즈가 제일 작은 순으로, */
+/* ERROR */
+/* @media screen and (min-width: 1920px) {
+  header {
+
+  }
+} */
+
+/* @media screen and (min-width: 780px) {
+  header {
+
+  }
+} */
