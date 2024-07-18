@@ -1,0 +1,52 @@
+/* variables */
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* mix-in */
+/* content */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body .btns button {
+  width: 150px;
+  padding: 7px;
+  background: #fff;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+body .btns button.complete:hover {
+  background: royalblue;
+  color: #fff;
+  border: 3px solid transparent;
+}
+body .btns button.loading:hover {
+  background: green;
+  color: #fff;
+  border: 3px solid transparent;
+}
+body .btns button.error:hover {
+  background: crimson;
+  color: #fff;
+  border: 3px solid transparent;
+}
+body .btns button.complete {
+  border: 3px solid royalblue;
+  color: royalblue;
+}
+body .btns button.loading {
+  border: 3px solid green;
+  color: green;
+}
+body .btns button.error {
+  border: 3px solid crimson;
+  color: crimson;
+}

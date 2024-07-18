@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      display: grid;
+      /* grid-template-columns: 250px 1fr 250px;
+      grid-template-rows: 100px 600px 1fr 100px; */
+      grid: 100px 600px 1fr 100px / 250px 1fr 250px;
+      grid-template-areas: "header header header" "welcome welcome welcome" "banner main aside" "footer footer footer";
+      div {
+        border: 1px solid #000;
+        display: grid;
+        font-size: 20px;
+        padding: 20px;
+        justify-items: center;
+        &.header {
+          grid-area: header;
+          background-color: darkkhaki;
+        }
+        &.welcome {
+          grid-area: welcome;
+          background: url("./img/welcome-image.jpg") center / cover no-repeat;
+        }
+        &.banner {
+          grid-area: banner;
+        }
+        &.main {
+          grid-area: main;
+          justify-items: start;
+        }
+        &.aside {
+          grid-area: aside;
+        }
+        &.footer {
+          grid-area: footer;
+          background-color: darkkhaki;
+        }
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="header">header</div>
+      <div class="welcome">welcome</div>
+      <div class="banner">banner</div>
+      <div class="main">
+        <h2>This is Main</h2>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis quia
+          dolorum eos iure? Quasi ipsum inventore blanditiis nulla amet enim
+          cumque voluptatibus quaerat, beatae aliquam exercitationem dolorem
+          aspernatur voluptatem? Adipisci. Cupiditate, earum. Quaerat suscipit
+          perspiciatis, blanditiis quam libero ut sint nemo eum error fugiat
+          fugit, voluptatibus ullam earum totam velit! Soluta, eveniet
+          exercitationem est aut et veniam voluptatem ipsa ut. Dolore sunt cum
+          beatae deleniti, voluptates ducimus nihil fugiat quis, quasi
+          laboriosam dignissimos. Nulla esse ipsa officia nihil neque beatae
+          voluptate fuga, fugit impedit voluptates commodi, quae iure,
+          dignissimos exercitationem. Assumenda, iste rerum! Voluptatibus est ex
+          ipsa dolorem nihil consequuntur earum beatae placeat porro vitae eaque
+          quia, totam sapiente error ab fugit sunt minus unde iure, ducimus
+          fugiat ullam nulla. Voluptate officia nihil nesciunt? Aliquid nulla
+          autem error unde! Adipisci omnis tenetur error dolorum beatae atque
+          earum accusantium cumque eaque, necessitatibus sed doloribus labore
+          fugit placeat aliquid odio, quia numquam! Fuga nihil, dolorem repellat
+          magni nobis, animi eius eum laboriosam facilis, rerum esse assumenda.
+          Totam exercitationem magni labore, iusto accusamus velit rem quibusdam
+          aliquam enim eum vero, aliquid quod culpa! Pariatur quas repellat
+          delectus corporis numquam consequatur sit accusantium accusamus
+          perspiciatis illo. Excepturi saepe consectetur cum! Incidunt ratione
+          dolores cupiditate itaque in, provident dicta eligendi nemo, quis ad
+          expedita doloremque. Ipsam distinctio similique alias officiis
+          quisquam minima, illo ad! Iste blanditiis laborum vero ratione ipsa
+          atque velit tempora optio molestiae, corporis corrupti. Doloribus
+          deserunt veritatis dolor accusantium rem tenetur expedita.
+        </p>
+      </div>
+      <div class="aside"></div>
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+@import "./scss/font.scss";
+@import "./scss/header.scss";
+@import "./scss/footer.scss";
+@import "./scss/variables.scss";
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: $body-bg-color;
+}
