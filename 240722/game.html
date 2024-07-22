@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./game.css" />
+    <script defer src="./game.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="wrapper_header">
+        <div class="content_title">
+          <div class="title">잼나는 GAME</div>
+          <div class="subtitle">TODAY CHOICE</div>
+        </div>
+        <div class="divideLine"></div>
+      </div>
+      <div class="game_container">
+        <img src="./contents/word.png" alt="wordgame" />
+        <div class="game_title">끝말잇기</div>
+        <div class="game_subtitle">
+          제시어 :
+          <!--특정 요소를 찾아와서 값을 바꾸게 하려고 class값줌  -->
+          <span id="word">산기슭</span>
+        </div>
+        <div class="word_text">
+          <!-- 문서안에 여러 폼을 사용할 경우 식별위해 name 사용 -->
+          <form name="wordgame" action="http://localpost:3000" method="post">
+            <!-- 별도의 스타일을 위해 class 값,js 에서 사용하기 위해 id 값 각각 사용 -->
+            <input
+              class="texttbox"
+              type="text"
+              name="myword"
+              id="myword"
+              placeholder="단어를 입력하세요"
+            />
+            <input class="search" type="submit" value="입력" />
+          </form>
+        </div>
+        <!-- 입력내용 참 거짓 확인 부분 -->
+        <div id="result" class="word_result">결과!</div>
+      </div>
+      <div class="game_container">
+        <img src="./contents/lotto.png" alt="lottogame" />
+        <div class="game_title">LOTTO</div>
+        <div class="game_subtitle">클릭해주세요~</div>
+        <div class="game_lotto_number">
+          <span>3,</span>
+          <span>44,</span>
+          <span>23,</span>
+          <span>18,</span>
+          <span>12,</span>
+          <span>11</span>
+        </div>
+        <button class="wrapper_lotto_btn">클릭!</button>
+      </div>
+    </div>
+  </body>
+</html>
