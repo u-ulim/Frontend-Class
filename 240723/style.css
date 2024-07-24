@@ -1,0 +1,74 @@
+/* RESET */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* MONTSERRAT */
+/* MANROPE */
+/* SOURCE */
+/* OVER CODE */
+/* VARIABLE */
+/* COMMON */
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #222;
+  background-color: #fff;
+}
+body .cd-section {
+  height: 100vh;
+}
+body .cd-section > div {
+  height: 100%;
+  position: relative;
+}
+body .cd-section > div .content {
+  background: #ddd;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  overflow: hidden;
+}
+
+/* AWARDS */
+.awards-inner {
+  height: 100%;
+  border: 1px solid main-item-border;
+  display: flex;
+}
+.awards-inner > div {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+.awards-inner > div.about-awards {
+  background: #1a1f24;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.awards-inner > div.about-awards .about-heading {
+  text-align: center;
+}
+.awards-inner > div.about-awards .about-heading p {
+  color: #999;
+}
