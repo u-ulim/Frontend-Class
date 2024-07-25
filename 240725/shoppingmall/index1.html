@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        #output {
+          font-size: 100px;
+          border: 3px solid #f00;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="output"></div>
+    <script>
+      const output = document.querySelector("#output");
+      console.log(output);
+      const arr = [2, 1, 3, 10];
+      // arr.sort();
+      // arr.sort((a, b) => {
+      //   if (a > b) {
+      //     return 1;
+      //   }
+      //   if (a === b) {
+      //     return 0;
+      //   }
+      //   if (a < b) {
+      //     return -1;
+      //   }
+      // });
+
+      // arr.sort((a, b) => {
+      //   return a - b;
+      // }); =>
+      arr.sort((a, b) => b - a);
+
+      // const arr1 = arr.map((item) => item * 2);
+      output.innerText = arr;
+      arr.sort();
+    </script>
+  </body>
+</html>
