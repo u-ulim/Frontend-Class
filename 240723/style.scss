@@ -22,35 +22,35 @@ $family: (
 
 /* Mix-in */
 @mixin formStyle {
-  border: 1px solid map-get($color, main-item-border);
-  border-radius: 3px;
   padding: 10px;
+  border: 1px solid map-get($color, main-item-border);
   transition: all 0.3s;
+  border-radius: 3px;
   &:focus {
-    outline: none;
     border: 1px solid map-get($color, main-blue-color);
+    outline: none;
     box-shadow: 0 0 5px map-get($color, main-blue-color);
   }
 }
 
 /* common */
 body {
+  background: map-get($color, main-light-bg);
   font-family: map-get($family, montserrat);
   color: map-get($color, main-font-color);
-  background: map-get($color, main-light-bg);
   .cd-section {
     height: 100vh;
     & > div {
-      height: 100%;
       position: relative;
+      height: 100%;
       .content {
-        background: map-get($color, main-item-border);
+        overflow: hidden;
         position: absolute;
-        left: 20px;
         bottom: 20px;
+        left: 20px;
         width: calc(100% - 40px);
         height: calc(100% - 80px);
-        overflow: hidden;
+        background: map-get($color, main-item-border);
       }
     }
   }
@@ -58,47 +58,52 @@ body {
 
 /* About */
 .about-inner {
-  background: map-get($color, main-blue-color) url("./images/line-drawing.png")
-    right bottom no-repeat;
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
+  background: map-get($color, main-blue-color) url("./images/line-drawing.png")
+    right bottom no-repeat;
   .about-items {
-    width: 45%;
     margin-left: 150px;
+    width: 45%;
+    color: map-get($color, main-light-bg);
     .item {
       display: flex;
       gap: 20px;
       margin-bottom: 30px;
       img {
         height: 100px;
+        transition: all 0.3s;
         filter: invert(1);
-        transition: all 0.5s;
       }
       &:hover img {
         filter: invert(0);
       }
+      &:hover h3 {
+        filter: invert(1);
+      }
       span {
         h3 {
           font-size: 28px;
+          transition: all 0.3s;
         }
         p {
-          font-size: 18px;
           margin-top: 5px;
+          font-size: 18px;
         }
       }
     }
   }
 }
 
-/* project */
+/* Project */
 .project-inner {
+  border: 1px solid map-get($color, main-item-border);
+  overflow: hidden;
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background: map-get($color, main-light-bg);
-  border: 1px solid map-get($color, main-item-border);
-  position: relative;
   input[name="tabmenu"] {
     display: none;
   }
@@ -111,73 +116,75 @@ body {
   input[id="tab3"]:checked ~ .tabs {
     margin-left: -200%;
   }
-
   .tabs {
+    display: flex;
     width: 300%;
     height: 100%;
     transition: all 0.5s;
     .tab {
-      width: 33.333%;
-      height: 100%;
       display: flex;
+      width: 33.3333%;
+      height: 100%;
       & > div {
         height: 100%;
         &.project-info {
-          width: 25%;
           padding: 50px;
           position: relative;
+          width: 25%;
           &::before {
-            content: attr(data-text);
-            font-size: 130px;
-            color: #eee;
             position: absolute;
             top: -10px;
             left: 10px;
+            font-size: 130px;
+            color: #eee;
+            content: attr(data-text);
           }
           h3 {
-            font-size: 20px;
             position: relative;
+            font-size: 20px;
           }
           p {
-            font: normal 16px/2.4rem map-get($family, montserrat);
             margin: 20px 0;
+            position: relative;
+            font: normal 16px/2.4rem map-get($family, montserrat);
           }
           ul {
             line-height: 4rem;
             li::before {
-              content: "\f105";
-              font-family: fontawesome;
               margin-right: 10px;
+              font-family: fontawesome;
+              content: "\f105";
             }
           }
           .detail {
-            margin: 20px 0 50px;
             display: flex;
             justify-content: center;
+            margin: 20px 0 50px;
             color: #999;
             div {
               flex: 1;
               text-align: center;
               span {
                 display: block;
+                margin-bottom: 10px;
                 font-size: 36px;
                 font-weight: bold;
                 color: map-get($color, main-font-color);
-                margin-bottom: 10px;
               }
             }
           }
           .view-project {
+            display: inline-block;
+            padding: 10px;
+            width: 220px;
             background: map-get($color, main-font-color);
             color: map-get($color, main-light-bg);
-            padding: 10px;
-            display: inline-block;
-            width: 220px;
             text-align: center;
             text-transform: uppercase;
+            transition: all 0.3s;
             &:hover {
               background: map-get($color, main-item-border);
-              color: map-get($color, main-font-collor);
+              color: map-get($color, main-font-color);
             }
           }
         }
@@ -198,44 +205,45 @@ body {
     left: 0;
     width: 25%;
     text-align: center;
-
     label {
+      display: inline-block;
+      margin: 8px;
+      position: relative;
       width: 5px;
       height: 5px;
       background: map-get($color, main-font-color);
-      display: inline-block;
       border-radius: 50%;
-      margin: 8px;
-      position: relative;
       &::before {
-        content: "";
+        display: inline-block;
+        border: 1px solid transparent;
         position: absolute;
         top: -6px;
-        left: 6px;
+        left: -6px;
         width: 17px;
         height: 17px;
-        border: 1px solid map-get($color, main-item-border);
+        transition: all 0.3s;
+        content: "";
         border-radius: 50%;
-        display: inline-block;
       }
-      &:hover ::before {
+      &:hover::before {
         border: 1px solid map-get($color, main-item-border);
       }
     }
   }
 }
+
 /* Plan */
 .plan-inner {
-  background: map-get($color, main-font-color);
-  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: map-get($color, main-font-color);
   .plan-feature {
     width: 80%;
     & > div {
-      color: map-get($color, main-item-border);
       height: 300px;
+      color: map-get($color, main-item-border);
       &.plan-info {
         display: flex;
         gap: 50px;
@@ -245,12 +253,12 @@ body {
             color: map-get($color, main-light-bg);
           }
           .bar {
-            background: map-get($color, main-blue-color);
-            width: 100px;
-            height: 4px;
-            border: none;
             display: inline-block;
             margin: 20px 0;
+            border: none;
+            width: 100px;
+            height: 4px;
+            background: map-get($color, main-blue-color);
           }
           p {
             font: normal 16px/2.4rem map-get($family, montserrat);
@@ -268,12 +276,12 @@ body {
           color: map-get($color, main-light-bg);
         }
         .bar {
-          background: map-get($color, main-blue-color);
-          width: 100px;
-          height: 4px;
-          border: none;
           display: inline-block;
           margin: 20px 0;
+          border: none;
+          width: 100px;
+          height: 4px;
+          background: map-get($color, main-blue-color);
         }
         .history-slider {
           div {
@@ -292,9 +300,9 @@ body {
             display: none !important;
           }
           .slick-dots li button::before {
+            top: 20px;
             font-size: 40px;
             color: map-get($color, main-light-bg);
-            top: 20px;
           }
         }
       }
@@ -304,54 +312,54 @@ body {
 
 /* Awards */
 .awards-inner {
-  height: 100%;
-  border: 1px solid map-get($color, main-item-border);
   display: flex;
+  border: 1px solid map-get($color, main-item-border);
+  height: 100%;
   & > div {
     flex: 1;
-    height: 100%;
     position: relative;
+    height: 100%;
     &.about-awards {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
       background: #1a1f24;
       color: map-get($color, main-light-bg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
       .about-heading {
-        text-align: center;
         width: 70%;
+        text-align: center;
         .bar {
+          margin: 30px auto;
+          border: none;
           width: 50px;
           height: 4px;
           background: map-get($color, main-red-color);
-          border: none;
-          margin: 30px auto;
         }
         p {
+          margin-bottom: 30px;
           color: #999;
           font: 400 17px/1.5rem "Montserrat", sans-serif;
-          margin-bottom: 30px;
         }
         .view-awards {
-          color: map-get($color, main-item-border);
-          border: 1px solid map-get($color, main-item-border);
-          border-radius: 20px;
           padding: 5px 15px;
+          border: 1px solid map-get($color, main-item-border);
+          color: map-get($color, main-item-border);
           transition: all 0.5s;
+          border-radius: 20px;
           &:hover {
-            color: map-get($color, main-light-bg);
-            background: #31c0ce;
             border: 1px solid transparent;
+            background: #31c0ce;
+            color: map-get($color, main-light-bg);
           }
         }
       }
     }
     &.victory-jump {
-      background: map-get($color, main-light-bg);
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      background: map-get($color, main-light-bg);
       img {
         width: 80%;
       }
@@ -361,63 +369,63 @@ body {
 
 /* Location */
 .location-inner {
-  background: url("./images/background-location.jpg") center/cover no-repeat;
-  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   position: relative;
+  height: 100%;
+  background: url("./images/background-location.jpg") center/cover no-repeat;
   &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba($color: #000000, $alpha: 0.8);
+    content: "";
   }
   .feature {
-    position: relative;
-    color: map-get($color, main-item-border);
     display: flex;
     gap: 100px;
+    position: relative;
     width: 70%;
+    color: map-get($color, main-item-border);
     .office {
-      flex: 3;
       display: flex;
-      flex-direction: column;
       gap: 40px;
+      flex: 3;
+      flex-direction: column;
       b {
-        text-transform: uppercase;
         font-weight: normal;
+        text-transform: uppercase;
       }
       h2 {
-        color: #1db1f0;
-        font-weight: 500;
         margin-top: 5px;
+        font-weight: 500;
+        color: #1db1f0;
       }
       p {
-        font: normal 16px/2.4rem map-get($family, montserrat);
         margin: 10px 0;
+        font: normal 16px/2.4rem map-get($family, montserrat);
       }
       span {
         color: map-get($color, main-light-bg);
       }
     }
     .service {
-      flex: 2;
       display: flex;
-      flex-direction: column;
       gap: 40px;
+      flex: 2;
+      flex-direction: column;
       .service-item {
         .fa-solid {
-          color: #1db1f0;
           font-size: 40px;
+          color: #1db1f0;
         }
         h3 {
-          color: map-get($color, main-light-bg);
-          font-size: 22px;
           margin: 10px 0;
+          font-size: 22px;
+          color: map-get($color, main-light-bg);
         }
         p {
           font: normal 16px/2.4rem "Montserrat", sans-serif;
@@ -429,34 +437,34 @@ body {
 
 /* Contact */
 .contact-inner {
-  background: map-get($color, main-light-bg);
-  height: 100%;
-  border: 1px solid map-get($color, main-item-border);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border: 1px solid map-get($color, main-item-border);
+  height: 100%;
+  background: map-get($color, main-light-bg);
   .contact-feature {
-    width: 70%;
     display: flex;
     gap: 30px;
+    width: 70%;
     & > div {
       flex: 1;
       &.contact-form {
         display: flex;
-        flex-direction: column;
         gap: 20px;
+        flex-direction: column;
         h3 {
           font: normal 30px/1rem "Montserrat", sans-serif;
         }
         .send-box {
           display: flex;
-          flex-direction: column;
           gap: 20px;
+          flex-direction: column;
           label {
             font: bold 16px/1rem "Montserrat", sans-serif;
             span {
-              color: map-get($color, main-red-color);
               font-weight: normal;
+              color: map-get($color, main-red-color);
             }
           }
           input[type="email"],
@@ -465,15 +473,15 @@ body {
             @include formStyle;
           }
           input[type="submit"] {
-            background: map-get($color, main-blue-color);
-            color: map-get($color, main-light-bg);
+            justify-content: flex-start;
+            margin-top: 10px;
             padding: 12px 20px;
             border: none;
-            border-radius: 3px;
-            margin-top: 10px;
-            transition: all 0.3s;
             width: 318px;
-            justify-content: flex-start;
+            background: map-get($color, main-blue-color);
+            color: map-get($color, main-light-bg);
+            transition: all 0.3s;
+            border-radius: 3px;
             &:hover {
               background: map-get($color, main-font-color);
             }
@@ -497,6 +505,74 @@ body {
         p {
           margin-top: 20px;
           line-height: 2.4rem;
+        }
+      }
+    }
+  }
+}
+
+/* Modal */
+.modal {
+  font-family: map-get($family, sourcecode);
+  .header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background: map-get($color, main-light-bg);
+    .header-inner {
+      margin: 0 auto;
+      border-bottom: 1px solid map-get($color, main-item-border);
+      width: 95%;
+      height: 90px;
+      line-height: 90px;
+      .modal-display {
+        font-size: 18px;
+      }
+    }
+  }
+  .hiring-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 600px;
+    text-align: center;
+    &.project-main1 {
+      height: 100vh;
+      background: url("./images/project-main-01-01.jpg") center/cover no-repeat;
+    }
+    .hiring-heading {
+      color: map-get($color, main-light-bg);
+      span {
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 60px;
+        font-weight: 200;
+      }
+    }
+    .hiring-info {
+      display: flex;
+      margin-bottom: 30px;
+      & > div {
+        flex: 1;
+        height: 600px;
+        &.center-parent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          .center-child {
+            width: 70%;
+            h2 {
+              font-size: normal 36px/1.4rem map-get($family, sourcecode);
+            }
+            p {
+              font: 300 22px/3.2rem map-get($family, sourcecode);
+            }
+          }
+        }
+        .photo {
         }
       }
     }

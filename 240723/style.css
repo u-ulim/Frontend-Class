@@ -52,6 +52,7 @@ body .cd-section > div .content {
 .about-inner .about-items {
   width: 45%;
   margin-left: 150px;
+  color: #fff;
 }
 .about-inner .about-items .item {
   display: flex;
@@ -61,20 +62,24 @@ body .cd-section > div .content {
 .about-inner .about-items .item img {
   height: 100px;
   filter: invert(1);
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .about-inner .about-items .item:hover img {
   filter: invert(0);
 }
+.about-inner .about-items .item:hover h3 {
+  filter: invert(1);
+}
 .about-inner .about-items .item span h3 {
   font-size: 28px;
+  transition: all 0.3s;
 }
 .about-inner .about-items .item span p {
   font-size: 18px;
   margin-top: 5px;
 }
 
-/* project */
+/* Project */
 .project-inner {
   width: 100%;
   height: 100%;
@@ -98,10 +103,11 @@ body .cd-section > div .content {
 .project-inner .tabs {
   width: 300%;
   height: 100%;
+  display: flex;
   transition: all 0.5s;
 }
 .project-inner .tabs .tab {
-  width: 33.333%;
+  width: 33.3333%;
   height: 100%;
   display: flex;
 }
@@ -128,6 +134,7 @@ body .cd-section > div .content {
 .project-inner .tabs .tab > div.project-info p {
   font: normal 16px/2.4rem "Montserrat";
   margin: 20px 0;
+  position: relative;
 }
 .project-inner .tabs .tab > div.project-info ul {
   line-height: 4rem;
@@ -144,8 +151,8 @@ body .cd-section > div .content {
   color: #999;
 }
 .project-inner .tabs .tab > div.project-info .detail div {
-  flex: 1;
   text-align: center;
+  flex: 1;
 }
 .project-inner .tabs .tab > div.project-info .detail div span {
   display: block;
@@ -162,9 +169,11 @@ body .cd-section > div .content {
   width: 220px;
   text-align: center;
   text-transform: uppercase;
+  transition: all 0.3s;
 }
 .project-inner .tabs .tab > div.project-info .view-project:hover {
   background: #ddd;
+  color: #222;
 }
 .project-inner .tabs .tab > div.project-photo {
   width: 75%;
@@ -195,14 +204,15 @@ body .cd-section > div .content {
   content: "";
   position: absolute;
   top: -6px;
-  left: 6px;
+  left: -6px;
   width: 17px;
   height: 17px;
-  border: 1px solid #ddd;
+  border: 1px solid transparent;
   border-radius: 50%;
   display: inline-block;
+  transition: all 0.3s;
 }
-.project-inner .btn label:hover ::before {
+.project-inner .btn label:hover::before {
   border: 1px solid #ddd;
 }
 
@@ -483,4 +493,47 @@ body .cd-section > div .content {
 .contact-inner .contact-feature > div.contact-info p {
   margin-top: 20px;
   line-height: 2.4rem;
+}
+
+/* Modal */
+.modal {
+  font-family: "Source Code Pro";
+}
+.modal .header {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 100;
+}
+.modal .header .header-inner {
+  width: 95%;
+  height: 90px;
+  line-height: 90px;
+  margin: 0 auto;
+  border-bottom: 1px solid #ddd;
+}
+.modal .header .header-inner .modal-display {
+  font-size: 18px;
+}
+.modal .hiring-main {
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.modal .hiring-main.project-main1 {
+  background: url("./images/project-main-01-01.jpg") center/cover no-repeat;
+  height: 100vh;
+}
+.modal .hiring-main .hiring-heading {
+  color: #fff;
+}
+.modal .hiring-main .hiring-heading span {
+  font-size: 20px;
+}
+.modal .hiring-main .hiring-heading h1 {
+  font-size: 60px;
+  font-weight: 200;
 }
