@@ -22,50 +22,198 @@ $family: (
 
 /* Mix-in */
 @mixin formStyle {
-  padding: 10px;
   border: 1px solid map-get($color, main-item-border);
-  transition: all 0.3s;
   border-radius: 3px;
+  padding: 10px;
+  transition: all 0.3s;
   &:focus {
-    border: 1px solid map-get($color, main-blue-color);
     outline: none;
+    border: 1px solid map-get($color, main-blue-color);
     box-shadow: 0 0 5px map-get($color, main-blue-color);
   }
 }
 
 /* common */
 body {
-  background: map-get($color, main-light-bg);
   font-family: map-get($family, montserrat);
   color: map-get($color, main-font-color);
+  background: map-get($color, main-light-bg);
   .cd-section {
     height: 100vh;
     & > div {
-      position: relative;
       height: 100%;
+      position: relative;
       .content {
-        overflow: hidden;
+        background: map-get($color, main-item-border);
         position: absolute;
-        bottom: 20px;
         left: 20px;
+        bottom: 20px;
         width: calc(100% - 40px);
         height: calc(100% - 80px);
-        background: map-get($color, main-item-border);
+        overflow: hidden;
       }
     }
   }
 }
 
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  .gnb-inner {
+    width: calc(100% - 40px);
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      img {
+        padding-top: 22px;
+      }
+    }
+    .gnb {
+      .slogan {
+        font-size: 16px;
+        font-style: italic;
+      }
+      .menu {
+        display: none;
+      }
+    }
+    .trigger {
+      display: none;
+    }
+  }
+}
+
+/* Home */
+.home-inner {
+  background: map-get($color, main-light-bg);
+  height: 100%;
+  &::before {
+    content: "";
+    background: map-get($color, main-font-color);
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: overlay 1s 2s ease-in-out both;
+  }
+  .welcome-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: 300;
+    text-align: center;
+    animation: slideup 2s linear both;
+    span {
+      font-size: 26px;
+      display: block;
+      .fa-heart {
+        color: map-get($color, main-red-color);
+      }
+    }
+  }
+  .opacity-image {
+    background: url("./images/section-bg-01.jpg") center/cover no-repeat;
+    height: 100%;
+    opacity: 0;
+    animation: opacity-image 1s 2.5s ease-in both;
+  }
+  .home-heading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    span {
+      display: block;
+      font-size: 115px;
+      font-weight: 600;
+      width: 0;
+      overflow: hidden;
+      color: map-get($color, main-light-bg);
+      animation: reveal 1s 3s ease-in-out both;
+      &:nth-child(1) {
+        animation-delay: 3s;
+      }
+      &:nth-child(2) {
+        animation-delay: 3.2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 3.4s;
+      }
+    }
+  }
+}
+
+@keyframes overlay {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+@keyframes slideup {
+  0% {
+    opacity: 0;
+    margin-top: 50px;
+  }
+  20% {
+    opacity: 1;
+    margin-top: 0;
+  }
+  80% {
+    opacity: 1;
+    margin-top: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes opacity-image {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 /* About */
 .about-inner {
-  display: flex;
-  align-items: center;
-  height: 100%;
   background: map-get($color, main-blue-color) url("./images/line-drawing.png")
     right bottom no-repeat;
+  height: 100%;
+  display: flex;
+  align-items: center;
   .about-items {
-    margin-left: 150px;
     width: 45%;
+    margin-left: 150px;
     color: map-get($color, main-light-bg);
     .item {
       display: flex;
@@ -73,8 +221,8 @@ body {
       margin-bottom: 30px;
       img {
         height: 100px;
-        transition: all 0.3s;
         filter: invert(1);
+        transition: all 0.3s;
       }
       &:hover img {
         filter: invert(0);
@@ -88,8 +236,8 @@ body {
           transition: all 0.3s;
         }
         p {
-          margin-top: 5px;
           font-size: 18px;
+          margin-top: 5px;
         }
       }
     }
@@ -98,12 +246,12 @@ body {
 
 /* Project */
 .project-inner {
-  border: 1px solid map-get($color, main-item-border);
-  overflow: hidden;
-  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background: map-get($color, main-light-bg);
+  border: 1px solid map-get($color, main-item-border);
+  position: relative;
   input[name="tabmenu"] {
     display: none;
   }
@@ -117,68 +265,68 @@ body {
     margin-left: -200%;
   }
   .tabs {
-    display: flex;
     width: 300%;
     height: 100%;
+    display: flex;
     transition: all 0.5s;
     .tab {
-      display: flex;
       width: 33.3333%;
       height: 100%;
+      display: flex;
       & > div {
         height: 100%;
         &.project-info {
+          width: 25%;
           padding: 50px;
           position: relative;
-          width: 25%;
           &::before {
+            content: attr(data-text);
+            font-size: 130px;
+            color: #eee;
             position: absolute;
             top: -10px;
             left: 10px;
-            font-size: 130px;
-            color: #eee;
-            content: attr(data-text);
           }
           h3 {
-            position: relative;
             font-size: 20px;
+            position: relative;
           }
           p {
+            font: normal 16px/2.4rem map-get($family, montserrat);
             margin: 20px 0;
             position: relative;
-            font: normal 16px/2.4rem map-get($family, montserrat);
           }
           ul {
             line-height: 4rem;
             li::before {
-              margin-right: 10px;
-              font-family: fontawesome;
               content: "\f105";
+              font-family: fontawesome;
+              margin-right: 10px;
             }
           }
           .detail {
+            margin: 20px 0 50px;
             display: flex;
             justify-content: center;
-            margin: 20px 0 50px;
             color: #999;
             div {
-              flex: 1;
               text-align: center;
+              flex: 1;
               span {
                 display: block;
-                margin-bottom: 10px;
                 font-size: 36px;
                 font-weight: bold;
                 color: map-get($color, main-font-color);
+                margin-bottom: 10px;
               }
             }
           }
           .view-project {
-            display: inline-block;
-            padding: 10px;
-            width: 220px;
             background: map-get($color, main-font-color);
             color: map-get($color, main-light-bg);
+            padding: 10px;
+            display: inline-block;
+            width: 220px;
             text-align: center;
             text-transform: uppercase;
             transition: all 0.3s;
@@ -206,24 +354,24 @@ body {
     width: 25%;
     text-align: center;
     label {
-      display: inline-block;
-      margin: 8px;
-      position: relative;
       width: 5px;
       height: 5px;
       background: map-get($color, main-font-color);
+      display: inline-block;
       border-radius: 50%;
+      margin: 8px;
+      position: relative;
       &::before {
-        display: inline-block;
-        border: 1px solid transparent;
+        content: "";
         position: absolute;
         top: -6px;
         left: -6px;
         width: 17px;
         height: 17px;
-        transition: all 0.3s;
-        content: "";
+        border: 1px solid transparent;
         border-radius: 50%;
+        display: inline-block;
+        transition: all 0.3s;
       }
       &:hover::before {
         border: 1px solid map-get($color, main-item-border);
@@ -234,16 +382,16 @@ body {
 
 /* Plan */
 .plan-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
   background: map-get($color, main-font-color);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .plan-feature {
     width: 80%;
     & > div {
-      height: 300px;
       color: map-get($color, main-item-border);
+      height: 300px;
       &.plan-info {
         display: flex;
         gap: 50px;
@@ -253,12 +401,12 @@ body {
             color: map-get($color, main-light-bg);
           }
           .bar {
-            display: inline-block;
-            margin: 20px 0;
-            border: none;
+            background: map-get($color, main-blue-color);
             width: 100px;
             height: 4px;
-            background: map-get($color, main-blue-color);
+            border: none;
+            display: inline-block;
+            margin: 20px 0;
           }
           p {
             font: normal 16px/2.4rem map-get($family, montserrat);
@@ -276,12 +424,12 @@ body {
           color: map-get($color, main-light-bg);
         }
         .bar {
-          display: inline-block;
-          margin: 20px 0;
-          border: none;
+          background: map-get($color, main-blue-color);
           width: 100px;
           height: 4px;
-          background: map-get($color, main-blue-color);
+          border: none;
+          display: inline-block;
+          margin: 20px 0;
         }
         .history-slider {
           div {
@@ -300,9 +448,9 @@ body {
             display: none !important;
           }
           .slick-dots li button::before {
-            top: 20px;
             font-size: 40px;
             color: map-get($color, main-light-bg);
+            top: 20px;
           }
         }
       }
@@ -312,54 +460,54 @@ body {
 
 /* Awards */
 .awards-inner {
-  display: flex;
-  border: 1px solid map-get($color, main-item-border);
   height: 100%;
+  border: 1px solid map-get($color, main-item-border);
+  display: flex;
   & > div {
     flex: 1;
-    position: relative;
     height: 100%;
+    position: relative;
     &.about-awards {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
       background: #1a1f24;
       color: map-get($color, main-light-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
       .about-heading {
-        width: 70%;
         text-align: center;
+        width: 70%;
         .bar {
-          margin: 30px auto;
-          border: none;
           width: 50px;
           height: 4px;
           background: map-get($color, main-red-color);
+          border: none;
+          margin: 30px auto;
         }
         p {
-          margin-bottom: 30px;
           color: #999;
           font: 400 17px/1.5rem "Montserrat", sans-serif;
+          margin-bottom: 30px;
         }
         .view-awards {
-          padding: 5px 15px;
-          border: 1px solid map-get($color, main-item-border);
           color: map-get($color, main-item-border);
-          transition: all 0.5s;
+          border: 1px solid map-get($color, main-item-border);
           border-radius: 20px;
+          padding: 5px 15px;
+          transition: all 0.5s;
           &:hover {
-            border: 1px solid transparent;
-            background: #31c0ce;
             color: map-get($color, main-light-bg);
+            background: #31c0ce;
+            border: 1px solid transparent;
           }
         }
       }
     }
     &.victory-jump {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background: map-get($color, main-light-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       img {
         width: 80%;
       }
@@ -369,63 +517,63 @@ body {
 
 /* Location */
 .location-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 100%;
   background: url("./images/background-location.jpg") center/cover no-repeat;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     background: rgba($color: #000000, $alpha: 0.8);
-    content: "";
   }
   .feature {
+    position: relative;
+    color: map-get($color, main-item-border);
     display: flex;
     gap: 100px;
-    position: relative;
     width: 70%;
-    color: map-get($color, main-item-border);
     .office {
-      display: flex;
-      gap: 40px;
       flex: 3;
+      display: flex;
       flex-direction: column;
+      gap: 40px;
       b {
-        font-weight: normal;
         text-transform: uppercase;
+        font-weight: normal;
       }
       h2 {
-        margin-top: 5px;
-        font-weight: 500;
         color: #1db1f0;
+        font-weight: 500;
+        margin-top: 5px;
       }
       p {
-        margin: 10px 0;
         font: normal 16px/2.4rem map-get($family, montserrat);
+        margin: 10px 0;
       }
       span {
         color: map-get($color, main-light-bg);
       }
     }
     .service {
-      display: flex;
-      gap: 40px;
       flex: 2;
+      display: flex;
       flex-direction: column;
+      gap: 40px;
       .service-item {
         .fa-solid {
-          font-size: 40px;
           color: #1db1f0;
+          font-size: 40px;
         }
         h3 {
-          margin: 10px 0;
-          font-size: 22px;
           color: map-get($color, main-light-bg);
+          font-size: 22px;
+          margin: 10px 0;
         }
         p {
           font: normal 16px/2.4rem "Montserrat", sans-serif;
@@ -437,34 +585,34 @@ body {
 
 /* Contact */
 .contact-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid map-get($color, main-item-border);
-  height: 100%;
   background: map-get($color, main-light-bg);
+  height: 100%;
+  border: 1px solid map-get($color, main-item-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .contact-feature {
+    width: 70%;
     display: flex;
     gap: 30px;
-    width: 70%;
     & > div {
       flex: 1;
       &.contact-form {
         display: flex;
-        gap: 20px;
         flex-direction: column;
+        gap: 20px;
         h3 {
           font: normal 30px/1rem "Montserrat", sans-serif;
         }
         .send-box {
           display: flex;
-          gap: 20px;
           flex-direction: column;
+          gap: 20px;
           label {
             font: bold 16px/1rem "Montserrat", sans-serif;
             span {
-              font-weight: normal;
               color: map-get($color, main-red-color);
+              font-weight: normal;
             }
           }
           input[type="email"],
@@ -473,15 +621,15 @@ body {
             @include formStyle;
           }
           input[type="submit"] {
-            justify-content: flex-start;
-            margin-top: 10px;
-            padding: 12px 20px;
-            border: none;
-            width: 318px;
             background: map-get($color, main-blue-color);
             color: map-get($color, main-light-bg);
-            transition: all 0.3s;
+            padding: 12px 20px;
+            border: none;
             border-radius: 3px;
+            margin-top: 10px;
+            transition: all 0.3s;
+            width: 318px;
+            justify-content: flex-start;
             &:hover {
               background: map-get($color, main-font-color);
             }
@@ -516,30 +664,30 @@ body {
   font-family: map-get($family, sourcecode);
   .header {
     position: fixed;
-    z-index: 100;
     width: 100%;
     background: map-get($color, main-light-bg);
+    z-index: 100;
     .header-inner {
-      margin: 0 auto;
-      border-bottom: 1px solid map-get($color, main-item-border);
       width: 95%;
       height: 90px;
       line-height: 90px;
+      margin: 0 auto;
+      border-bottom: 1px solid map-get($color, main-item-border);
       .modal-display {
         font-size: 18px;
       }
     }
   }
   .hiring-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     &.project-main1 {
-      height: 100vh;
       background: url("./images/project-main-01-01.jpg") center/cover no-repeat;
+      height: 100vh;
     }
     .hiring-heading {
       color: map-get($color, main-light-bg);
@@ -551,30 +699,309 @@ body {
         font-weight: 200;
       }
     }
-    .hiring-info {
-      display: flex;
-      margin-bottom: 30px;
-      & > div {
-        flex: 1;
-        height: 600px;
-        &.center-parent {
+  }
+  .hiring-info {
+    margin-bottom: 30px;
+    display: flex;
+    & > div {
+      flex: 1;
+      height: 600px;
+      &.center-parent {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .center-child {
+          width: 70%;
+          h2 {
+            font: normal 36px/3.2rem map-get($family, sourcecode);
+          }
+          p {
+            font: 300 22px/2rem map-get($family, sourcecode);
+          }
+        }
+      }
+      &.photo {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        &.project-info {
           display: flex;
-          align-items: center;
           justify-content: center;
-          position: relative;
-          .center-child {
-            width: 70%;
-            h2 {
-              font-size: normal 36px/1.4rem map-get($family, sourcecode);
-            }
+          align-items: center;
+          font-size: 24px;
+          // margin-left: 100px;
+        }
+      }
+    }
+  }
+  .hiring-slogan {
+    padding: 100px 0;
+    p {
+      width: 70%;
+      text-align: center;
+      font-size: 32px;
+      margin: 0 auto;
+      position: relative;
+      &::before {
+        content: ",,";
+        font-family: map-get($family, overpass);
+        position: absolute;
+        top: -100px;
+        left: -120px;
+        font-size: 200px;
+        color: #ddd;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+/* featherlight */
+.featherlight {
+  .featherlight-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    max-height: 100%;
+    margin-left: 0;
+    .featherlight-close-icon {
+      position: absolute;
+      top: 30px;
+      right: 70px;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      line-height: 38px;
+      font-size: 40px;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* responsive */
+@media screen and (max-width: 768px) {
+  /* common */
+  body {
+    .cd-section {
+      height: auto;
+      & > div {
+        height: auto;
+        .content {
+          width: 100%;
+          height: 100%;
+          position: static;
+        }
+      }
+    }
+  }
+
+  /* Header */
+  header {
+    transition: all 0.3s;
+    .gnb-inner {
+      .gnb {
+        .slogan {
+          display: none;
+        }
+        .menu {
+          display: block;
+          background: map-get($color, main-light-bg);
+          position: absolute;
+          top: 0;
+          right: -160px;
+          height: 100vh;
+          padding: 20px;
+          padding-top: 20px;
+          // margin-top: 350px;
+          // height: 100vh;
+          transition: all 0.3s;
+        }
+        &.active .menu {
+          right: 0;
+        }
+      }
+      .trigger {
+        display: block;
+        width: 24px;
+        height: 14px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        // border: 1px solid #f00;
+        span {
+          display: inline-block;
+          width: 100%;
+          height: 1px;
+          background: map-get($color, main-font-color);
+          position: absolute;
+          left: 0;
+          &:nth-child(1) {
+            top: 0;
+          }
+          &:nth-child(2) {
+            top: 50%;
+          }
+          &:nth-child(3) {
+            top: 100%;
+          }
+        }
+        &.active span {
+          &:nth-child(1) {
+            top: 50%;
+            transform: rotate(45deg);
+          }
+          &:nth-child(2) {
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            top: 50%;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+    &.active {
+      background: map-get($color, main-light-bg);
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  /* Home */
+  .home-inner {
+    height: 100vh;
+    .welcome-text {
+      width: 100%;
+    }
+    .home-heading {
+      span {
+        font-size: 50px;
+      }
+    }
+  }
+
+  /* about */
+  .about-inner {
+    height: auto;
+    padding: 40px;
+    .about-items {
+      width: 100%;
+      position: static;
+      margin-left: 0;
+      text-align: center;
+      .item {
+        flex-direction: column;
+        align-items: center;
+        img {
+          height: 80px;
+        }
+      }
+    }
+  }
+
+  /* Project */
+  .project-inner {
+    width: 100%;
+    height: auto;
+    .tabs {
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      .tab {
+        width: 100%;
+        flex-direction: column;
+        & > div {
+          width: 100%;
+          &.project-info {
+            width: 100%;
+            padding: 20px;
             p {
-              font: 300 22px/3.2rem map-get($family, sourcecode);
+              width: 100%;
+            }
+            .detail {
+              width: 100%;
+              margin: 30px;
+              margin-left: 10px;
+            }
+          }
+          &.project-photo {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .btn {
+      display: none;
+    }
+  }
+
+  /* Plan */
+  .plan-inner {
+    height: auto;
+    padding: 50px 20px;
+    .plan-feature {
+      width: 100%;
+      position: static;
+      & > div {
+        height: auto;
+        &.plan-info {
+          flex-direction: column;
+          margin-bottom: 40px;
+          .plan-photo {
+            width: 100%;
+            img {
+              width: 100%;
+              height: auto;
             }
           }
         }
-        .photo {
-        }
       }
+    }
+  }
+
+  /* Awards */
+  .awards-inner {
+    height: auto;
+    flex-direction: column;
+    & > div {
+      width: 100%;
+      &.about-awards {
+        height: auto;
+        padding: 40px 20px;
+      }
+      &.victory-jump {
+        height: auto;
+        padding: 40px 20px;
+      }
+    }
+  }
+
+  /* Location */
+  .location-inner {
+    height: auto;
+    .feature {
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      & > div {
+        width: 100%;
+        padding: 20px;
+      }
+    }
+  }
+
+  /* Contact */
+  .contact-inner {
+    height: auto;
+    .contact-feature {
+      width: 100%;
+      flex-direction: column;
+      padding: 50px 20px;
     }
   }
 }
