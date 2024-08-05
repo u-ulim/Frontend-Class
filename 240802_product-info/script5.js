@@ -37,6 +37,27 @@ select.addEventListener("change", function () {
 
 const radioBtn = document.order.userAge;
 
-const checkBox = document.querySelector("input[name='alarm']:checked");
+// const checkBox = document.querySelector("input[name='alarm']:checked");
 
-console.log(checkBox);
+const radioBox = document.querySelectorAll("input[name='userAge']");
+
+// forEach => 아이템, 인덱스, 배열 전체
+radioBox.forEach((item) => {
+  item.addEventListener("change", (e) => {
+    const target = e.target;
+    if (target.checked) {
+      alert(`당신의 연령은 ${target.value}대입니다!`);
+    }
+  });
+});
+
+const checkBox = document.querySelectorAll("input[name='alarm']");
+
+checkBox.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.checked) {
+      alert(`당신의 관심은 ${target.value}입니다`);
+    }
+  });
+});

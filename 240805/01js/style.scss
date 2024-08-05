@@ -1,0 +1,65 @@
+@import "./reset.scss";
+
+@font-face {
+  font-family: "youtube";
+  src: url("./font/AnyConv.com__KFOmCnqEu92Fr1Mu4mxPKTU1Kg.otf");
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "youtube";
+  #container {
+    border: 1px solid #f00;
+    position: relative;
+    width: 390px;
+    height: 1000px;
+    background: #fff;
+  }
+}
+
+/* HEADER */
+header {
+  width: 390px;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  #header_contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+    height: 55px;
+    background: #000;
+    img {
+      height: 22px;
+    }
+    #header_right {
+      width: 54px;
+      display: flex;
+      justify-content: space-between;
+      .fa-solid {
+        color: #fff;
+      }
+    }
+  }
+}
+
+/* FIGURE */
+figure {
+  position: fixed;
+  top: 50px;
+  z-index: 10;
+  width: 390px;
+  height: 220px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* MAIN */
