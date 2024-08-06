@@ -1,4 +1,4 @@
-const productInfo = "https://my-json-server.typicode.com/u-ulim/temu-fake/db";
+const productInfo = "https://my-json-server.typicode.com/u-ulim/temu-json/db";
 
 //메서드 체이닝 기법이라고 함, 함수를 사슬처럼 여러 개 묶어놓기
 

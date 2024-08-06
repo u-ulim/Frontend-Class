@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="script5.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-size: 22px;
+        & > button {
+          display: none;
+          display: block;
+        }
+        #modal-box {
+          display: none;
+          #profile {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            position: relative;
+            border-radius: 8px;
+            #desc {
+              button {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                border: 1px solid red;
+              }
+              ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 160px;
+                li {
+                  margin: 10px 0;
+                }
+              }
+            }
+            &.active {
+              display: flex;
+            }
+          }
+          &.active {
+          }
+        }
+
+        img {
+          width: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="open" class="">프로필 보기</button>
+    <div id="modal-box">
+      <div id="profile ">
+        <img
+          src="https://file2.nocutnews.co.kr/newsroom/image/2024/04/11/202404111239449446_0.jpg"
+          alt=""
+        />
+        <div id="desc">
+          <button>닫기</button>
+          <ul>
+            <li><a href="#">이름: 김도경</a></li>
+            <li><a href="#">직업: 김도경</a></li>
+            <li><a href="#">취미: 김도경</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

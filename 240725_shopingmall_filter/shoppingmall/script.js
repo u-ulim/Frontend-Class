@@ -3,7 +3,7 @@
 // console.log(products.data[0].img);
 
 // const productInfo = "./ db.json";
-const productInfo = "https://my-json-server.typicode.com/u-ulim/temu-fake/db";
+const productInfo = "https://my-json-server.typicode.com/u-ulim/temu-json/db";
 fetch(productInfo)
   .then((response) => response.json())
   .then((data) => {
