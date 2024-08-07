@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body .review {
+  display: flex;
+}
+body .review .review-stars {
+  display: flex;
+}
+body .review .review-stars li {
+  cursor: pointer;
+}
+body .review .review-stars li i {
+  color: #eee;
+}
+body .review .review-stars li i.active {
+  color: yellow;
+}

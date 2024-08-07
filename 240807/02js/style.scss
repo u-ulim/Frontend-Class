@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .review {
+    display: flex;
+    .review-stars {
+      display: flex;
+      li {
+        cursor: pointer;
+        i {
+          color: #eee;
+          &.active {
+            color: yellow;
+          }
+        }
+      }
+    }
+  }
+
+  // .star-rating {
+  //   display: flex;
+  //   background: #333;
+  //   padding: 5px;
+  //   border-radius: 5px;
+  //   .stars .fa-star {
+  //     cursor: pointer;
+  //   }
+  //   .print {
+  //     color: #fff;
+  //   }
+  // }
+}
