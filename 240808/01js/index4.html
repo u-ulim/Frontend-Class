@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>list</title>
+    <script defer src="script4.js"></script>
+    <link rel="stylesheet" href="style4.css" />
+  </head>
+  <body>
+    <!-- <div class="wrapper">
+      <form>
+        <h3>😘 부트캠프 참가자 명단</h3>
+        <div class="input__box">
+          <div>
+            <label for="name" id="name">이름</label>
+            <input class="input__box-name" type="text" name="name" id="name" />
+          </div>
+          <div>
+            <label for="subject" id="subject">전공</label>
+            <input
+              class="input__box-subject"
+              type="text"
+              name="subject"
+              id="subject"
+            />
+          </div>
+        </div>
+        <input class="btn" type="submit" value="등록하기">
+
+        <div class="list__box">
+          <ul class="lists">
+            <li>
+              <div>이름</div>
+              <span>전공</span>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div> -->
+
+    <main id="container">
+      <h1>부트캠프 참가자 명단</h1>
+      <form action="http://127.0.0.1.:5504" method="get">
+        <ul>
+          <li>
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name" />
+          </li>
+          <li>
+            <label for="major">전공</label>
+            <input type="text" name="major" id="major" />
+          </li>
+        </ul>
+        <input type="submit" value="등록하기" />
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>전공</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+  </body>
+</html>
