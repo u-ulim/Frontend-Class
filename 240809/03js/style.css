@@ -1,0 +1,116 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html {
+  font-size: 13px;
+}
+
+body {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background: skyblue;
+}
+
+/* 아날로그  */
+.clock-container {
+  border: 8px solid #fff;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+}
+.clock-container .number {
+  position: absolute;
+  font-size: 2rem;
+}
+.clock-container .number#num3 {
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+.clock-container .number#num6 {
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+}
+.clock-container .number#num9 {
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+.clock-container .number#num12 {
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+}
+.clock-container #dot {
+  width: 14px;
+  height: 14px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 50%;
+}
+.clock-container #hour {
+  width: 7px;
+  height: 60px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -60px;
+  transform-origin: center bottom;
+}
+.clock-container #minute {
+  width: 2px;
+  height: 95px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -95px;
+  transform-origin: center bottom;
+}
+.clock-container #second {
+  width: 2px;
+  height: 80px;
+  background: #dc143c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -80px;
+  transform-origin: center bottom;
+}
+
+/* 디지털 */
+.digital-clock {
+  font-size: 2rem;
+}
