@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="container">
+      <form action="http://127.0.0.0.1:5500" method="get">
+        <h1>내가 살아온 시간</h1>
+        <label for="year"> <input type="text" name="" id="year" />년 </label>
+        <label for="month"> <input type="text" name="" id="month" />월 </label>
+        <label for="date"> <input type="text" name="" id="date" />일 </label>
+        <input type="submit" value="계산하기" />
+      </form>
+      <div id="result">
+        <p id="current">오늘은  8월 12일입니다.</p>
+        <p id="days" class="accent">태어난지 20일</p>
+        <p id="hours" class="accent">태어난지 10000000000시간ㄴ</p>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+}
+body h1 {
+  text-align: center;
+}
+body form {
+  margin: 20px 0px;
+}
+body form input[type=text] {
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+body form input[type=submit],
+body form input[type=reset] {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+body #result {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+}

@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+body form label {
+  margin-right: 20px;
+}
+body form label input[type=text] {
+  width: 60px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+body form input[type=submit] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+}
+body #result {
+  width: 360px;
+  height: 116px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 50px;
+  padding: 20px;
+}
