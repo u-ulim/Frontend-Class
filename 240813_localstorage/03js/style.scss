@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* variable */
+$main-bg-color: #2e2e2e;
+$main-light-color: #fff;
+$sub-text-color: #888;
+$main-text-color: #b1b1b1;
+
+html {
+  // font-size: 14px;
+}

@@ -3,17 +3,22 @@
 // console.log(products.data[0].img);
 
 // const productInfo = "./ db.json";
-const productInfo = "https://my-json-server.typicode.com/u-ulim/temu-json/db";
+const productInfo =
+  "https://my-json-server.typicode.com/u-ulim/temu-products/db";
+
 fetch(productInfo)
   .then((response) => response.json())
   .then((data) => {
     let idCounter = Date.now();
     const products = {
-      data: data.data.map((item) => ({
+      data: data.products.map((item) => ({
         ...item,
         id: idCounter++,
       })),
     };
+
+    console.log(data);
+    console.log("hi");
 
     // New
 
@@ -65,7 +70,7 @@ fetch(productInfo)
       li.addEventListener("click", () => {
         const url = `product-detail.html?category=${
           product.category
-        }&name=${encodeURIComponent(product.name)}`;
+        }&title=${encodeURIComponent(product.title)}`;
         window.location.href = url;
       });
     };
