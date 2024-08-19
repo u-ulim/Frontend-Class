@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* variable */
+html {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #222;
+  color: #fff;
+}
+
+.player {
+  width: 80%;
+  max-width: 550px;
+  position: relative;
+  overflow: hidden;
+}
+.player .video {
+  width: 100%;
+}
+.player .controls {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.6);
+  transform: translateY(100%);
+  transition: transform 0.5s;
+}
+.player .controls .progress {
+  width: 100%;
+  height: 6px;
+  background: #222;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 1px solid red;
+}
+.player .controls .progress .bar {
+  width: 50%;
+  height: 100%;
+  background-color: #dc143c;
+  position: relative;
+}
+.player .controls .progress .bar .circle {
+  width: 16px;
+  height: 16px;
+  background: #dc143c;
+  border-radius: 50%;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.player .controls .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.player .controls .buttons .menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.player .controls .buttons .menu button {
+  width: 40px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #dc143c;
+  color: #fff;
+  cursor: pointer;
+}
+.player .controls .buttons .menu:nth-child(2) {
+  display: flex;
+}
+.player .controls .buttons .menu:nth-child(2) input[type=range] {
+  width: 100px;
+  height: 6px;
+  background: #fff;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.player .controls .buttons .menu:nth-child(2) input[type=range]::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  appearance: none;
+  background: #fff;
+  -webkit-appearance: none;
+}
+.player .controls .buttons .menu .time {
+  display: flex;
+  gap: 8px;
+  font-size: 90%;
+}
+.player:hover .controls {
+  transform: translateY(0%);
+}
+.player:hover .circle {
+  opacity: 1;
+}

@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* variable */
+
+$main-dark-color: #222;
+$main-light-color: #fff;
+
+$main-progress-color: #dc143c;
+
+html {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: $main-dark-color;
+  color: $main-light-color;
+}
+
+.player {
+  width: 80%;
+  max-width: 550px;
+  position: relative;
+  overflow: hidden;
+  .video {
+    width: 100%;
+  }
+  .controls {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 1;
+    background: rgba($color: #000000, $alpha: 0.6);
+    transform: translateY(100%);
+    transition: transform 0.5s;
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: $main-dark-color;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      border: 1px solid red;
+
+      .bar {
+        width: 50%;
+        height: 100%;
+        background-color: $main-progress-color;
+        position: relative;
+        .circle {
+          width: 16px;
+          height: 16px;
+          background: $main-progress-color;
+          border-radius: 50%;
+          position: absolute;
+          top: -100%;
+          left: 0;
+          opacity: 1;
+          transition: opacity 0.5s;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        button {
+          width: 40px;
+          height: 30px;
+          border-radius: 8px;
+          font-size: 15px;
+          background: $main-progress-color;
+          color: $main-light-color;
+          cursor: pointer;
+        }
+        &:nth-child(2) {
+          display: flex;
+          input[type="range"] {
+            width: 100px;
+            height: 6px;
+            background: $main-light-color;
+            appearance: none;
+            -webkit-appearance: none;
+            border-radius: 8px;
+            cursor: pointer;
+            &::-webkit-slider-thumb {
+              width: 15px;
+              height: 15px;
+              appearance: none;
+              background: $main-light-color;
+              -webkit-appearance: none;
+            }
+          }
+        }
+        .time {
+          display: flex;
+          gap: 8px;
+          font-size: 90%;
+        }
+      }
+    }
+  }
+  &:hover .controls {
+    transform: translateY(0%);
+  }
+  &:hover .circle {
+    opacity: 1;
+  }
+}
