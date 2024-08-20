@@ -57,10 +57,9 @@ body {
   position: absolute;
   top: 0px;
   left: 0px;
-  border: 1px solid red;
 }
 .player .controls .progress .bar {
-  width: 50%;
+  width: 0%;
   height: 100%;
   background-color: #dc143c;
   position: relative;

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* variable */
+
+html {
+  font-size: 16px;
+}
+
+#container {
+  background: url("./background\ \(3\).jpg") center/cover no-repeat;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    .input-wrapper {
+      width: 80%;
+      height: 70px;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+  }
+}

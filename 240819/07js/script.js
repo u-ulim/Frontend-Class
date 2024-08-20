@@ -1,6 +1,9 @@
 const playButton = document.querySelector(".play-pause");
 const video = document.querySelector("video");
 const volumeBar = document.querySelector("input[type='range']");
+const progressCover = document.querySelector(".progress");
+
+const player = document.querySelector(".player");
 
 const play = () => {
   playButton.innerText = "||";
@@ -38,7 +41,39 @@ const updateTime = () => {
   current.innerText = formatting(video.currentTime);
   duration.innerText = formatting(video.duration);
 };
+
+const updateProgress = () => {
+  const progressBar = document.querySelector(".bar");
+  const progressPointer = document.querySelector(".circle");
+
+  // 현재값/전체기준값*100
+  const duration = video.duration;
+  const currentTime = video.currentTime;
+  const percent = (currentTime / duration) * 100;
+  progressBar.style.width = `${percent}%`;
+  const progressBarWidth = progressCover.clientWidth - 1;
+  const newPosition = (currentTime / duration) * progressBarWidth;
+
+  progressPointer.style.left = `${newPosition}px`;
+
+  console.log(progressBarWidth);
+};
+
+const videoPoint = (e) => {
+  const mouseX = e.pageX - player.offsetLeft;
+  const progressBarWidth = progressCover.clientWidth;
+  const duration = video.duration;
+
+  const clickedTime = (mouseX / progressBarWidth) * duration;
+  console.log(clickedTime);
+  video.currentTime = clickedTime;
+};
+
 playButton.addEventListener("click", togglePlay);
 volumeBar.addEventListener("change", setVolume);
 video.addEventListener("click", setVolume);
 video.addEventListener("timeupdate", updateTime);
+video.addEventListener("timeupdate", updateProgress);
+progressCover.addEventListener("click", (e) => {
+  videoPoint(e);
+});
