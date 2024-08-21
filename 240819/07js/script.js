@@ -2,8 +2,9 @@ const playButton = document.querySelector(".play-pause");
 const video = document.querySelector("video");
 const volumeBar = document.querySelector("input[type='range']");
 const progressCover = document.querySelector(".progress");
-
 const player = document.querySelector(".player");
+const rateButtons = document.querySelectorAll(".rate");
+const fullButton = document.querySelector("#fullscreenBtn");
 
 const play = () => {
   playButton.innerText = "||";
@@ -59,11 +60,14 @@ const updateProgress = () => {
   console.log(progressBarWidth);
 };
 
+const setRate = (e) => {
+  const { rate } = e.target.dataset;
+  video.playbackRate = rate;
+};
 const videoPoint = (e) => {
   const mouseX = e.pageX - player.offsetLeft;
   const progressBarWidth = progressCover.clientWidth;
   const duration = video.duration;
-
   const clickedTime = (mouseX / progressBarWidth) * duration;
   console.log(clickedTime);
   video.currentTime = clickedTime;
@@ -76,4 +80,14 @@ video.addEventListener("timeupdate", updateTime);
 video.addEventListener("timeupdate", updateProgress);
 progressCover.addEventListener("click", (e) => {
   videoPoint(e);
+});
+
+rateButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    setRate(e);
+  });
+});
+
+fullButton.addEventListener("click", () => {
+  video.requestFullscreen();
 });

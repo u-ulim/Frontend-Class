@@ -114,6 +114,10 @@ body {
   background: #fff;
   -webkit-appearance: none;
 }
+.player .controls .buttons .menu #fullscreenBtn {
+  font-size: 0.8rem;
+  padding-left: 0;
+}
 .player .controls .buttons .menu .time {
   display: flex;
   gap: 8px;
