@@ -1,5 +1,8 @@
 import api from "./env.js";
 
+const form = document.querySelector("form");
+console.log(form);
+
 const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${api.API_KEY}&language=ko&page=1`;
 
 // 기본 값으로 빈 객체를 전달하여 오류 방지
@@ -64,7 +67,34 @@ fetch(URL)
   .then(({ results }) => {
     results.forEach((movie) => {
       createBlock(movie);
-      console.log(movie);
     });
   })
   .catch((error) => console.error("API 요청 실패:", error));
+
+const removeAll = () => {
+  const movies = document.querySelectorAll(".movie");
+  movies.forEach((movie) => {
+    movie.remove();
+  });
+};
+const searchMovie = (e) => {
+  e.preventDefault();
+
+  const input = document.querySelector("input");
+  // value라는 값을 구조분해할당으로 가져오고, keyword로 대체
+  const { value: keyword } = input;
+  const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${api.API_KEY}&query=${keyword}&include_adult=false&language=en-US&page=1`;
+
+  if (keyword) {
+    removeAll();
+    fetch(searchURL)
+      .then((response) => response.json())
+      .then(({ results }) =>
+        results.forEach((movie) => {
+          createBlock(movie);
+        })
+      );
+  }
+};
+
+form.addEventListener("submit", searchMovie);
