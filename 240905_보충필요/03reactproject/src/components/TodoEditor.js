@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import "./TodoList.css";
 
-const TodoEditor = () => {
+const TodoEditor = ({ onCreate }) => {
+  const [content, setContent] = useState("");
+  const inputRef = useRef();
+
+  const onKeyDown = (e) => {
+    if (e.keyCode === 13) onSubmit();
+  };
+
+  const onChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+  const onSubmit = () => {
+    if (!content) {
+      inputRef.current.focus();
+      return;
+    }
+    onCreate(content);
+    setContent("");
+  };
+
   return (
     <div className="TodoEditor">
       <div className="editor_wrapper">
-        <input placeholder="새라운 ToDo..." />
-        <button>추가</button>
+        <input
+          value={content}
+          ref={inputRef}
+          onChange={onChangeContent}
+          onKeyDown={onKeyDown}
+          placeholder="새로운 ToDo..."
+        />
+        <button onClick={onSubmit}>추가</button>
       </div>
     </div>
   );
