@@ -1,4 +1,10 @@
-import React, { useReducer, useRef, useEffect, useState } from "react";
+import React, {
+  useReducer,
+  useContext,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import Home from "./pages/Home";
@@ -31,24 +37,29 @@ const reducer = (state, action) => {
     }
   }
 };
-
 const mockData = [
   {
     id: "mock1",
-    date: new Date().getTime(),
+    date: new Date().getTime() - 1,
     content: "mock1",
     emotionId: 1,
   },
   {
     id: "mock2",
-    date: new Date().getTime(),
+    date: new Date().getTime() - 2,
     content: "mock2",
     emotionId: 2,
   },
   {
     id: "mock3",
-    date: new Date().getTime(),
+    date: new Date().getTime() - 3,
     content: "mock3",
+    emotionId: 3,
+  },
+  {
+    id: "mock4",
+    date: new Date(2024, 7, 15).getTime(), // 2024년 8월 15일로 설정
+    content: "mock4 - 8월 데이터",
     emotionId: 3,
   },
 ];
@@ -58,7 +69,6 @@ export const DiaryStateContext = React.createContext();
 
 // 함수만 따로 모아서 가도록 한다. 성격()
 export const DiaryDispatchContext = React.createContext();
-console.log(DiaryStateContext);
 
 const App = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -126,7 +136,7 @@ const App = () => {
                 <Route path="/diary/:id" element={<Diary />} />
                 {/* 동적 아이디 생성으로 인한 /diary/ 없음*/}
                 {/* <Route path="/diary/" element={<Diary />} /> */}
-                <Route path="/edit" element={<Edit />} />
+                <Route path="/edit/:id" element={<Edit />} />
               </Routes>
               {/* <div>
             <Link to={"/"}>HOME</Link>
