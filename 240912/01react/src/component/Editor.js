@@ -32,7 +32,7 @@ const Textarea = styled.textarea`
   padding: 20px;
   font-size: 20px;
   font-family: "Nanum Pen Script", cursive;
-  width: 100%;
+  width: 93%;
   min-height: 200px;
   resize: none;
   ::focus {

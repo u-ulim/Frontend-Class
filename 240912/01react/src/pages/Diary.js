@@ -35,7 +35,7 @@ const Diary = () => {
         />
         {/* <div>{id}번 일기</div>
         <div>Diary 페이집니다</div> */}
-        <Viewer />
+        <Viewer content={content} emotionId={emotionId} />
       </div>
     );
   }
