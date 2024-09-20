@@ -19,8 +19,12 @@ const New = () => {
   };
 
   const onSubmit = (data) => {
-    const { date, emotionId, content } = data;
-    onCreate(date, emotionId, content);
+    // const { date, content, emotionId } = data;
+    // onCreate(date, content, emotionId);
+    // 함수의 순서는 인자값 대로
+    const { date, content, emotionId } = data;
+    onCreate(date, content, emotionId);
+
     navigate("/");
   };
 

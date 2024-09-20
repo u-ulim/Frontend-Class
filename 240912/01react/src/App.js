@@ -112,6 +112,7 @@ const App = () => {
   const onDelete = (targetId) => {
     dispatch({
       type: "DELETE",
+      targetId,
     });
   };
 

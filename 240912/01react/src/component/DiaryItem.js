@@ -81,8 +81,7 @@ const DiaryItem = ({ id, date, content, emotionId }) => {
       </DiaryContent>
       <InfoSection>
         <DateItem>{new Date(parseInt(date)).toLocaleDateString()}</DateItem>
-        {/* <ContentItem>{content.slice(0, 25)}</ContentItem> */}
-        {content}
+        <ContentItem>{content.slice(0, 25)}</ContentItem>
       </InfoSection>
       <ButtonSection>
         <Button title={"수정하기"} onClick={goEdit} />
