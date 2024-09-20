@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
+import GlobalStyles from "./styles/GlobalStyles.styles";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -126,6 +127,7 @@ const App = () => {
         <img src="/emotion/emotion1.png"></img>
         <img src={"/emotion/emotion1.png"}></img> */}
         {/* <img src={`${process.env.PUBLIC_URL}/emotion/emotion1.png`}></img> */}
+        <GlobalStyles />
         <DiaryStateContext.Provider value={data}>
           <DiaryDispatchContext.Provider
             value={{ onCreate, onUpdate, onDelete }}
