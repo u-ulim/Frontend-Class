@@ -1,0 +1,1270 @@
+<div class="m-search-header">
+  <!---->
+  <div class="search-boxes">
+    <div class="search-box">
+      <select
+        name=""
+        id="category-si"
+        onchange="categoryChange(this); searchPlaces();"
+      >
+        <option value="서울특별시">서울특별시</option>
+        <option value="인천광역시">인천광역시</option>
+        <option value="대전광역시">대전광역시</option>
+        <option value="광주광역시">광주광역시</option>
+        <option value="대구광역시">대구광역시</option>
+        <option value="울산광역시">울산광역시</option>
+        <option value="부산광역시">부산광역시</option>
+        <option value="경기도">경기도</option>
+        <option value="강원도">강원도</option>
+        <option value="충청북도">충청북도</option>
+        <option value="충청남도">충청남도</option>
+        <option value="전라북도">전라북도</option>
+        <option value="전라남도">전라남도</option>
+        <option value="경상북도">경상북도</option>
+        <option value="경상남도">경상남도</option>
+        <option value="제주도">제주도</option>
+      </select>
+    </div>
+  </div>
+  <!---->
+
+  <div class="search-box">
+    <select
+      name=""
+      id="state"
+      onchange=" categoryChange2(this); searchPlaces(); "
+    >
+      <option>강남구</option>
+      <option>강동구</option>
+      <option>강북구</option>
+      <option>강서구</option>
+      <option>관악구</option>
+      <option>광진구</option>
+      <option>구로구</option>
+      <option>금천구</option>
+      <option>도봉구</option>
+      <option>동대문구</option>
+      <option>동작구</option>
+      <option>마포구</option>
+      <option>서대문구</option>
+      <option>서초구</option>
+      <option>성동구</option>
+      <option>성북구</option>
+      <option>송파구</option>
+      <option>양천구</option>
+      <option>영등포구</option>
+      <option>용산구</option>
+      <option>은평구</option>
+      <option>종로구</option>
+      <option>중구</option>
+      <option>중랑구</option>
+    </select>
+  </div>
+  <!-- <div class="">
+            <button type="button">매장찾기</button>
+          </div> -->
+</div>
+<div class="map_wrap">
+  <div
+    id="map"
+    style="width: 100%; height: 50vw; position: relative; overflow: hidden"
+  ></div>
+
+  <div id="menu_wrap" class="bg_white">
+    <!-- <div class="option">
+          <div>
+            <form onsubmit="searchPlaces(); return false;">
+              키워드 :
+              <input type="text" value="이태원 맛집" id="keyword" size="15" />
+              <button type="submit">검색하기</button>
+            </form>
+          </div>
+        </div> -->
+    <div class="search-header">
+      <div class="search-boxes">
+        <div class="search-box">
+          <select
+            name=""
+            id="category-si"
+            onchange="categoryChange(this); searchPlaces();"
+          >
+            <option value="서울특별시">서울특별시</option>
+            <option value="인천광역시">인천광역시</option>
+            <option value="대전광역시">대전광역시</option>
+            <option value="광주광역시">광주광역시</option>
+            <option value="대구광역시">대구광역시</option>
+            <option value="울산광역시">울산광역시</option>
+            <option value="부산광역시">부산광역시</option>
+            <option value="경기도">경기도</option>
+            <option value="강원도">강원도</option>
+            <option value="충청북도">충청북도</option>
+            <option value="충청남도">충청남도</option>
+            <option value="전라북도">전라북도</option>
+            <option value="전라남도">전라남도</option>
+            <option value="경상북도">경상북도</option>
+            <option value="경상남도">경상남도</option>
+            <option value="제주도">제주도</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="search-box">
+        <select
+          name=""
+          id="state"
+          onchange=" categoryChange2(this); searchPlaces(); "
+        >
+          <option>강남구</option>
+          <option>강동구</option>
+          <option>강북구</option>
+          <option>강서구</option>
+          <option>관악구</option>
+          <option>광진구</option>
+          <option>구로구</option>
+          <option>금천구</option>
+          <option>도봉구</option>
+          <option>동대문구</option>
+          <option>동작구</option>
+          <option>마포구</option>
+          <option>서대문구</option>
+          <option>서초구</option>
+          <option>성동구</option>
+          <option>성북구</option>
+          <option>송파구</option>
+          <option>양천구</option>
+          <option>영등포구</option>
+          <option>용산구</option>
+          <option>은평구</option>
+          <option>종로구</option>
+          <option>중구</option>
+          <option>중랑구</option>
+        </select>
+      </div>
+      <!-- <div class="">
+            <button type="button">매장찾기</button>
+          </div> -->
+    </div>
+
+    <hr />
+    <ul id="placesList"></ul>
+    <div id="pagination"></div>
+  </div>
+</div>
+<ul id="mobile-placesList"></ul>
+<!-- <div id="pagination"></div> -->
+
+<script
+  type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4bf23a8060ff3d7e04651a914a0c0a87&libraries=services"
+></script>
+
+<script>
+  /*******************************************************************
+       SELECT
+      *******************************************************************/
+
+  window.onload = function () {
+    //페이지 로드 후 실행할 코드 작성
+    let keyword = `서울특별시 강남구 노모어피자`;
+
+    if (!keyword.replace(/^\s+|\s+$/g, "")) {
+      alert("키워드를 입력해주세요!");
+      return false;
+    }
+
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    ps.keywordSearch(keyword, placesSearchCB);
+  };
+
+  let si;
+  let gungoo;
+  const state = document.getElementById("state");
+  const categorySi = document.getElementById("category-si");
+
+  function categoryChange(e) {
+    const gangwon = [
+      "춘천시",
+      "강릉시",
+      "동해시",
+      "삼척시",
+      "속초시",
+      "원주시",
+      "태백시",
+      "고성군",
+      "양구군",
+      "양양군",
+      "영월군",
+      "인제군",
+      "정선군",
+      "철원군",
+      "평창군",
+      "홍천군",
+      "화천군",
+      "횡성군",
+    ];
+    const gyeonggi = [
+      "고양시",
+      "과천시",
+      "광명시",
+      "광주시",
+      "구리시",
+      "군포시",
+      "김포시",
+      "남양주시",
+      "동두천시",
+      "부천시",
+      "성남시",
+      "수원시",
+      "시흥시",
+      "안산시",
+      "안성시",
+      "안양시",
+      "양주시",
+      "오산시",
+      "용인시",
+      "의왕시",
+      "의정부시",
+      "이천시",
+      "파주시",
+      "평택시",
+      "포천시",
+      "하남시",
+      "화성시",
+      "가평군",
+      "양평군",
+      "여주군",
+      "연천군",
+    ];
+    const gyeongsangnam = [
+      "거제시",
+      "김해시",
+      "양산시",
+      "마산시",
+      "밀양시",
+      "사천시",
+      "진주시",
+      "진해시",
+      "창원시",
+      "통영시",
+      "거창군",
+      "고성군",
+      "남해군",
+      "산청군",
+      "의령군",
+      "창녕군",
+      "하동군",
+      "함안군",
+      "함양군",
+      "합천군",
+    ];
+    const gyeongsangbuk = [
+      "경산시",
+      "경주시",
+      "구미시",
+      "김천시",
+      "문경시",
+      "상주시",
+      "안동시",
+      "영주시",
+      "영천시",
+      "포항시",
+      "고령군",
+      "군위군",
+      "봉화군",
+      "성주군",
+      "영덕군",
+      "영양군",
+      "예천군",
+      "울릉군",
+      "울진군",
+      "의성군",
+      "청도군",
+      "청송군",
+      "칠곡군",
+    ];
+    const gwangju = ["북구", "광산구", "남구", "동구", "서구"];
+    const daegu = [
+      "남구",
+      "달서구",
+      "동구",
+      "북구",
+      "서구",
+      "수성구",
+      "중구",
+      "달성군",
+    ];
+    const daejeon = ["대덕구", "동구", "서구", "유성구", "중구"];
+    const busan = [
+      "강서구",
+      "금정구",
+      "남구",
+      "동구",
+      "동래구",
+      "부산진구",
+      "북구",
+      "사상구",
+      "사하구",
+      "서구",
+      "수영구",
+      "연제구",
+      "영도구",
+      "중구",
+      "해운대구",
+      "기장군",
+    ];
+    const seoul = [
+      "강남구",
+      "강동구",
+      "강북구",
+      "강서구",
+      "관악구",
+      "광진구",
+      "구로구",
+      "금천구",
+      "노원구",
+      "도봉구",
+      "동대문구",
+      "동작구",
+      "마포구",
+      "서대문구",
+      "서초구",
+      "성동구",
+      "성북구",
+      "송파구",
+      "양천구",
+      "영등포구",
+      "용산구",
+      "은평구",
+      "종로구",
+      "중구",
+      "중랑구",
+    ];
+    const ulsan = ["남구", "동구", "북구", "중구", "울주군"];
+    const incheon = [
+      "계양구",
+      "남구",
+      "남동구",
+      "동구",
+      "부평구",
+      "서구",
+      "연수구",
+      "중구",
+      "강화군",
+      "옹진군",
+    ];
+    const jeonnam = [
+      "광양시",
+      "나주시",
+      "목포시",
+      "순천시",
+      "여수시",
+      "강진군",
+      "고흥군",
+      "곡성군",
+      "구례군",
+      "담양군",
+      "무안군",
+      "보성군",
+      "신안군",
+      "영광군",
+      "영암군",
+      "완도군",
+      "장성군",
+      "장흥군",
+      "진도군",
+      "함평군",
+      "해남군",
+      "화순군",
+    ];
+    const jeonbuk = [
+      "군산시",
+      "김제시",
+      "남원시",
+      "익산시",
+      "전주시",
+      "정읍시",
+      "고창군",
+      "무주군",
+      "부안군",
+      "순창군",
+      "완주군",
+      "임실군",
+      "장수군",
+      "진안군",
+    ];
+    const jeju = ["제주시", "서귀포시", "남제주군", "북제주군"];
+    const chungbuk = [
+      "청주시",
+      "제천시",
+      "충주시",
+      "괴산군",
+      "단양군",
+      "보은군",
+      "영동군",
+      "옥천군",
+      "음성군",
+      "증평군",
+      "진천군",
+      "청원군",
+    ];
+    const chungnam = [
+      "천안시",
+      "아산시",
+      "태안군",
+      "서산시",
+      "당진시",
+      "예산군",
+      "흥성군",
+      "보령시",
+      "청양군",
+      "공주시",
+      "부여군",
+      "서천군",
+      "계룡시",
+      "논산시",
+      "금산군",
+    ];
+
+    if (e.value == "강원도") {
+      add = gangwon;
+    } else if (e.value == "경기도") {
+      add = gyeonggi;
+    } else if (e.value == "경상남도") {
+      add = gyeongsangnam;
+    } else if (e.value == "경상북도") {
+      add = gyeongsangbuk;
+    } else if (e.value == "광주광역시") {
+      add = gwangju;
+    } else if (e.value == "대구광역시") {
+      add = daegu;
+    } else if (e.value == "대전광역시") {
+      add = daejeon;
+    } else if (e.value == "부산광역시") {
+      add = busan;
+    } else if (e.value == "서울특별시") {
+      add = seoul;
+    } else if (e.value == "울산광역시") {
+      add = ulsan;
+    } else if (e.value == "인천광역시") {
+      add = incheon;
+    } else if (e.value == "전라남도") {
+      add = jeonnam;
+    } else if (e.value == "전라북도") {
+      add = jeonbuk;
+    } else if (e.value == "제주도") {
+      add = jeju;
+    } else if (e.value == "충청남도") {
+      add = chungnam;
+    } else if (e.value == "충청북도") {
+      add = chungbuk;
+    }
+
+    state.options.length = 1;
+
+    // 군/구 갯수;
+    let opt;
+    for (property in add) {
+      opt = document.createElement("option");
+      opt.value = add[property];
+      opt.innerHTML = add[property];
+      state.appendChild(opt);
+    }
+    state[0].remove();
+    si = e.value;
+  }
+
+  function categoryChange2(e) {
+    gungoo = e.value;
+  }
+
+  /*******************************************************************
+       KAKAO MAP
+      *******************************************************************/
+
+  // 마커를 담을 배열입니다
+  var markers = [];
+
+  var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+    mapOption = {
+      center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+      level: 4, // 지도의 확대 레벨
+    };
+
+  // 지도를 생성합니다
+  var map = new kakao.maps.Map(mapContainer, mapOption);
+
+  // 장소 검색 객체를 생성합니다
+  var ps = new kakao.maps.services.Places();
+
+  // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+  var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+  // 키워드로 장소를 검색합니다
+  //   searchPlaces();
+
+  // 키워드 검색을 요청하는 함수입니다
+
+  function searchPlaces() {
+    // 키워드 별로 검색
+    const firstOption = state[0].innerHTML;
+
+    if (si === undefined) {
+      keyword = `${categorySi.value} ${gungoo} 노모어피자`;
+    } else if (gungoo === undefined) {
+      keyword = `${si} ${firstOption} 노모어피자`;
+    } else {
+      keyword = `${si} ${gungoo} 노모어피자`;
+    }
+
+    keyword = removeExcludedWords(keyword, [
+      "아이코닉노모어피자",
+      "피자아이코닉노모어피자",
+    ]); // 단어 제외
+    console.log(keyword);
+
+    // var keyword = document.getElementById("keyword").value;
+
+    if (!keyword.replace(/^\s+|\s+$/g, "")) {
+      alert("키워드를 입력해주세요!");
+      return false;
+    }
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    ps.keywordSearch(keyword, placesSearchCB);
+    mapOption = {
+      level: 10,
+    };
+    gungoo = undefined;
+    si = undefined;
+  }
+
+  //   function searchPlaces2() {
+  //     console.log(si, gungoo);
+  //     if (si === undefined) {
+  //       keyword = `${gungoo} 노모어피자`;
+  //       console.log("hi");
+  //     } else {
+  //       keyword = `${si} ${gungoo}노모어피자`;
+  //       console.log("hi2");
+  //     }
+
+  //     // var keyword = document.getElementById("keyword").value;
+
+  //     if (!keyword.replace(/^\s+|\s+$/g, "")) {
+  //       alert("키워드를 입력해주세요!");
+  //       return false;
+  //     }
+
+  //     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+  //     ps.keywordSearch(keyword, placesSearchCB);
+  //   }
+
+  // 장소검색이 완료됐을 때 호출되는 콜백함수입니다
+  function placesSearchCB(data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+      // 검색 결과에서 제외할 키워드
+      const excludedWords = ["아이코닉노모어피자", "피자아이코닉노모어피자"];
+
+      // 결과 필터링
+      const filteredData = data.filter((place) => {
+        return !excludedWords.some((word) => place.place_name.includes(word));
+      });
+
+      // 정상적으로 검색이 완료됐으면
+      // 검색 목록과 마커를 필터링된 데이터로 표출합니다
+      displayPlaces(filteredData);
+      displayPlacesM(filteredData);
+
+      // 페이지 번호를 표출합니다
+      displayPagination(pagination);
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+      alert("검색 결과가 존재하지 않습니다.");
+      return;
+    } else if (status === kakao.maps.services.Status.ERROR) {
+      alert("검색 결과 중 오류가 발생했습니다.");
+      return;
+    }
+  }
+
+  // pc -------------------------------------------------------
+  // 검색 결과 목록과 마커를 표출하는 함수입니다
+  function displayPlaces(places) {
+    // let listEl;
+    // let pcListEl = document.getElementById("placesList");
+    // let mobileListEl = document.getElementById("mobile-placesList");
+    // if (pcListEl.style.display === "none") {
+    //   listEl = mobileListEl;
+    // } else {
+    //   listEl = pcListEl;
+    // }
+    let pcListEl = document.getElementById("placesList");
+    let mobileListEl = document.getElementById("mobile-placesList");
+    let listEl;
+    if (pcListEl.style.display === "none") {
+      listEl = "null";
+      listEl = mobileListEl;
+    } else {
+      listEl = pcListEl;
+    }
+
+    let menuEl = document.getElementById("menu_wrap");
+    let fragment = document.createDocumentFragment();
+    let bounds = new kakao.maps.LatLngBounds();
+    let listStr = "";
+
+    // 검색 결과 목록에 추가된 항목들을 제거합니다
+    removeAllChildNods(listEl);
+
+    // 지도에 표시되고 있는 마커를 제거합니다
+    removeMarker();
+
+    for (var i = 0; i < places.length; i++) {
+      // 마커를 생성하고 지도에 표시합니다
+      var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+        marker = addMarker(placePosition, i),
+        itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+      // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+      // LatLngBounds 객체에 좌표를 추가합니다
+      bounds.extend(placePosition);
+
+      // 마커와 검색결과 항목에 mouseover 했을때
+      // 해당 장소에 인포윈도우에 장소명을 표시합니다
+      // mouseout 했을 때는 인포윈도우를 닫습니다
+      (function (marker, title) {
+        kakao.maps.event.addListener(marker, "mouseover", function () {
+          displayInfowindow(marker, title);
+        });
+
+        kakao.maps.event.addListener(marker, "mouseout", function () {
+          infowindow.close();
+        });
+
+        // 마우스 오버 삭제
+        // itemEl.onmouseover = function () {
+        //   displayInfowindow(marker, title);
+        // };
+
+        itemEl.onmouseout = function () {
+          infowindow.close();
+        };
+      })(marker, places[i].place_name);
+
+      fragment.appendChild(itemEl);
+    }
+
+    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+    listEl.appendChild(fragment);
+    menuEl.scrollTop = 0;
+
+    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    map.setBounds(bounds);
+  }
+  // pc end -------------------------------------------------------
+
+  // mobile -------------------------------------------------------
+  // 검색 결과 목록과 마커를 표출하는 함수입니다
+  function displayPlacesM(places) {
+    // let listEl;
+    // let pcListEl = document.getElementById("placesList");
+    // let mobileListEl = document.getElementById("mobile-placesList");
+    // if (pcListEl.style.display === "none") {
+    //   listEl = mobileListEl;
+    // } else {
+    //   listEl = pcListEl;
+
+    let listEl = document.getElementById("mobile-placesList");
+
+    let menuEl = document.getElementById("menu_wrap");
+    let fragment = document.createDocumentFragment();
+    let bounds = new kakao.maps.LatLngBounds();
+    let listStr = "";
+
+    // 검색 결과 목록에 추가된 항목들을 제거합니다
+    removeAllChildNods(listEl);
+
+    // 지도에 표시되고 있는 마커를 제거합니다
+    removeMarker();
+
+    for (var i = 0; i < places.length; i++) {
+      // 마커를 생성하고 지도에 표시합니다
+      var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+        marker = addMarker(placePosition, i),
+        itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+      // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+      // LatLngBounds 객체에 좌표를 추가합니다
+      bounds.extend(placePosition);
+
+      // 마커와 검색결과 항목에 mouseover 했을때
+      // 해당 장소에 인포윈도우에 장소명을 표시합니다
+      // mouseout 했을 때는 인포윈도우를 닫습니다
+      (function (marker, title) {
+        kakao.maps.event.addListener(marker, "mouseover", function () {
+          displayInfowindow(marker, title);
+        });
+
+        kakao.maps.event.addListener(marker, "mouseout", function () {
+          infowindow.close();
+        });
+
+        // 마우스 오버 삭제
+        // itemEl.onmouseover = function () {
+        //   displayInfowindow(marker, title);
+        // };
+
+        itemEl.onmouseout = function () {
+          infowindow.close();
+        };
+      })(marker, places[i].place_name);
+
+      fragment.appendChild(itemEl);
+    }
+
+    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+    listEl.appendChild(fragment);
+    menuEl.scrollTop = 0;
+
+    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    map.setBounds(bounds);
+  }
+
+  //mobile end -----------------------------------
+
+  // 검색결과 항목을 Element로 반환하는 함수입니다
+  function getListItem(index, places) {
+    var el = document.createElement("li"),
+      itemStr =
+        // '<span class="markerbg marker_' +
+        // (index + 1) +
+        // '"></span>' +
+        '<div class="info">' + "   <h5>" + places.place_name + "</h5>";
+    //<span class="material-symbols-outlined">pin_drop</span>
+    if (places.road_address_name) {
+      itemStr +=
+        '<span class="material-map">' +
+        "</span>" +
+        " <span>" +
+        places.road_address_name +
+        "</span>" +
+        "</br>";
+      // '   <span class="jibun gray">' +
+      // places.address_name +
+      // "</span>" +
+      // "</br>";
+    } else {
+      itemStr += "    <span>" + places.address_name + "</span>";
+    }
+
+    if (places.phone) {
+      itemStr +=
+        '<span class="material-smartphone">' +
+        "</span>" +
+        '  <span class="tel">' +
+        places.phone +
+        "</span>" +
+        "</div>";
+    } else {
+      itemStr += '  <span class="tel">' + places.phone + "</span>" + "</div>";
+    }
+
+    el.innerHTML = itemStr;
+    el.className = "item";
+
+    //항목을 클릭했을 때 지도를 해당 장소의 좌표로 이동시키는 이벤트 추가
+    // el.onclick = function () {
+    // let moveLatLon = new kakao.maps.LatLng(places.y, places.x);
+    // map.setCenter(moveLatLon);
+    // displayInfowindow(moveLatLon, places.place_name);
+    // };
+    //항목을 클릭했을 때 지도를 해당 장소의 좌표로 이동시키는 이벤트 추가
+    el.onclick = function () {
+      let moveLatLon = new kakao.maps.LatLng(places.y, places.x);
+      map.setLevel(4);
+      map.setCenter(moveLatLon);
+    };
+
+    return el;
+  }
+
+  /***********************************************
+       * 카피
+       *
+      // // 검색결과 항목을 Element로 반환하는 함수입니다
+      // function getListItem(index, places) {
+      //   var el = document.createElement("li"),
+      //     itemStr =
+      //       '<span class="markerbg marker_' +
+      //       (index + 1) +
+      //       '"></span>' +
+      //       '<div class="info">' +
+      //       "   <h5>" +
+      //       places.place_name +
+      //       "</h5>";
+  
+      //   if (places.road_address_name) {
+      //     itemStr +=
+      //       "    <span>" +
+      //       places.road_address_name +
+      //       "</span>" +
+      //       '   <span class="jibun gray">' +
+      //       places.address_name +
+      //       "</span>";
+      //   } else {
+      //     itemStr += "    <span>" + places.address_name + "</span>";
+      //   }
+  
+      //   itemStr += '  <span class="tel">' + places.phone + "</span>" + "</div>";
+  
+      //   el.innerHTML = itemStr;
+      //   el.className = "item";
+  
+      //   return el;
+      // }
+      ***********************************************/
+
+  // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+  function addMarker(position, idx, title) {
+    var imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+      imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+      imgOptions = {
+        spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+        spriteOrigin: new kakao.maps.Point(0, idx * 46 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+        offset: new kakao.maps.Point(13, 37), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+      },
+      markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+      marker = new kakao.maps.Marker({
+        position: position, // 마커의 위치
+        image: markerImage,
+      });
+
+    marker.setMap(map); // 지도 위에 마커를 표출합니다
+    markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+    return marker;
+  }
+
+  // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+  function removeMarker() {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers = [];
+  }
+
+  // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+  function displayPagination(pagination) {
+    var paginationEl = document.getElementById("pagination"),
+      fragment = document.createDocumentFragment(),
+      i;
+
+    // 기존에 추가된 페이지번호를 삭제합니다
+    while (paginationEl.hasChildNodes()) {
+      paginationEl.removeChild(paginationEl.lastChild);
+    }
+
+    for (i = 1; i <= pagination.last; i++) {
+      var el = document.createElement("a");
+      el.href = "#";
+      el.innerHTML = i;
+
+      if (i === pagination.current) {
+        el.className = "on";
+      } else {
+        el.onclick = (function (i) {
+          return function () {
+            pagination.gotoPage(i);
+          };
+        })(i);
+      }
+
+      fragment.appendChild(el);
+    }
+    paginationEl.appendChild(fragment);
+  }
+
+  // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+  // 인포윈도우에 장소명을 표시합니다
+  function displayInfowindow(marker, title) {
+    var content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
+
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+  }
+
+  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+  function removeAllChildNods(el) {
+    while (el.hasChildNodes()) {
+      el.removeChild(el.lastChild);
+    }
+  }
+
+  function removeExcludedWords(keyword, excludedWords) {
+    excludedWords.forEach((word) => {
+      const regex = new RegExp(`\\b${word}\\b`, "gi");
+      keyword = keyword.replace(regex, "").trim();
+    });
+    return keyword;
+  }
+</script>
+
+<style>
+  /* html map ID에 붙어있는 width: 100%, height 100% 삭제할 것*/
+  @media screen and (max-width: 1024px) {
+    #map {
+    }
+    .map_wrap {
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    #placesList {
+      display: none !important;
+    }
+    #mobile-placesList {
+      display: block !important;
+    }
+    #menu_wrap {
+      display: none !important;
+    }
+    .m-search-header {
+      width: 100% !important;
+      height: 40px;
+      display: flex !important;
+      justify-content: space-between;
+      margin-bottom: 7px;
+    }
+    .m-search-header > div {
+      width: 49%;
+    }
+    .m-search-header select {
+      width: 100% !important;
+      float: left;
+      height: 40px !important;
+      font-size: 16px !important;
+      font-weight: 600;
+      padding-bottom: 2px;
+      text-indent: 5px;
+      cursor: pointer;
+      vertical-align: top;
+      position: relative;
+      border: 3px solid #ff7900 !important;
+      appearance: none;
+      /* 다양한 브라우저를 지원하기 위해 vendor prefixes를 추가합니다. */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      /* 커스텀 스타일을 적용하기 위해 padding을 조정합니다. */
+      padding: 0px; /* 선택지와 화살표 사이의 여백을 지정합니다. */
+      /* 배경 이미지를 사용하여 화살표를 추가합니다. */
+      background-image: url("http://uiissoop.dothome.co.kr/wp-content/uploads/2024/04/arrow-bottom.png"); /* 화살표 이미지 경로를 지정합니다. */
+      background-repeat: no-repeat; /* 배경 이미지 반복을 제거합니다. */
+      background-size: 12px 8px;
+      background-position: right 10px center; /* 화살표 위치를 오른쪽 가운데로 설정합니다. */
+      /* 다른 스타일을 원하는 경우 추가로 스타일을 지정할 수 있습니다. */
+      border: 1px solid #ccc; /* 선택 상자 테두리 스타일을 지정합니다. */
+      border-radius: 4px; /* 선택 상자 테두리 반경을 조정합니다. */
+      font-size: 14px; /* 글꼴 크기를 지정합니다. */
+    }
+  }
+
+  #mobile-placesList {
+    display: none;
+  }
+
+  .map_wrap,
+  .map_wrap * {
+    padding: 0;
+    font-family: "Noto sans KR";
+    font-size: 12px;
+  }
+
+  .map_wrap a,
+  .map_wrap a:hover,
+  .map_wrap a:active {
+    color: #000;
+    text-decoration: none;
+  }
+  .map_wrap {
+    position: relative;
+  }
+
+  #menu_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    margin: 10px 0 30px 10px;
+    padding: 5px;
+    /*overflow-y: auto;*/
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    font-size: 12px;
+    border-radius: 10px;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+    display: block;
+  }
+
+  .bg_white {
+    background: #fff;
+  }
+
+  /* 카테고리별 헤더부분 */
+  .m-search-header {
+    display: none;
+  }
+
+  .search-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .search-box > select {
+    width: 140px;
+    height: 35px;
+    font-size: 13px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    border: 3px solid #ff7900;
+    cursor: pointer;
+    vertical-align: top;
+    position: relative;
+  }
+  .search-box > select > option {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+  }
+  .search-box > select:focus {
+    outline: none;
+  }
+
+  /* 매장별 헤더부분 */
+  .option form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #keyword {
+    width: 200px;
+    height: 19px;
+    font-size: 13px;
+    padding-bottom: 2px;
+    border: 3px solid #ff7900;
+    padding-left: 5px;
+  }
+
+  .option button {
+    width: 80px;
+    height: 26px;
+    font-size: 13px;
+    text-align: center;
+    padding-bottom: 2px;
+    background-color: #ff7900;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  /*위치별 헤더 부분*/
+  .location-search {
+    pointer-events: none;
+  }
+  .location-search::placeholder {
+    font-size: 12px;
+    color: #000;
+  }
+
+  /* .search-header-button button {
+      width: 80px;
+      height: 25px;
+      font-size: 13px;
+      text-align: center;
+      padding-bottom: 2px;
+      background-color: #ff4e00;
+      color: #fff;
+      border: none;
+      } */
+
+  #menu_wrap hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #ff7900;
+    margin: 3px 0;
+  }
+  #menu_wrap .option {
+    text-align: center;
+  }
+  #menu_wrap .option p {
+    margin: 10px 0;
+  }
+  #menu_wrap .option button {
+    margin-left: 5px;
+  }
+  #mobile-placesList {
+    font-family: "Noto sans KR";
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  #placesList li,
+  #mobile-placesList li {
+    list-style: none;
+    border: 3px solid #ff7900 !important;
+    margin-top: 7px;
+  }
+
+  #placesList .item,
+  #mobile-placesList .item {
+    position: relative;
+    border-bottom: 1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 65px;
+  }
+  #placesList .item span,
+  #mobile-placesList .item span {
+    display: inline;
+    margin-top: 4px;
+  }
+
+  #placesList .item h5,
+  #placesList .item .info,
+  #mobile-placesList .item h5,
+  #mobile-placesList .item .info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* 마테리얼 아이콘 */
+
+  .material-map {
+    font-size: 15px !important;
+    display: inline-block !important;
+    transform: translate(0%, 25%);
+    background: url(https://nomorepizza.co.kr/wp-content/uploads/2024/04/place.png)
+      no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    color: #ff4e00 !important;
+  }
+  .material-smartphone {
+    font-size: 15px !important;
+    display: inline-block !important;
+    transform: translate(0%, 17%);
+    color: #ff4e00;
+    font-size: 15px !important;
+    display: inline-block !important;
+    transform: translate(0%, 25%);
+    background: url(https://nomorepizza.co.kr/wp-content/uploads/2024/04/tel.png)
+      no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    color: #ff4e00 !important;
+  }
+
+  #placesList .item h5,
+  #mobile-placesList .item h5 {
+    color: #ff7900;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0px;
+    margin: 0px;
+  }
+  #placesList .item .info,
+  #mobile-placesList .item .info {
+    padding: 10px;
+  }
+  #placesList .info .gray,
+  #mobile-placesList .info .gray {
+    color: #8a8a8a;
+  }
+  #placesList .info .jibun,
+  #mobile-placesList .info .jubun {
+    padding-left: 26px;
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+      no-repeat;
+  }
+  #placesList .info .tel,
+  #mobile-placesList .info .tel {
+    color: #009900;
+  }
+  #placesList .item .markerbg {
+    /* float: left;
+              position: absolute;
+              height: 37px;
+              margin: 10px 0 0 10px;
+              background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+              no-repeat; */
+  }
+  #placesList .item .marker_1 {
+    background-position: 0 -10px;
+  }
+  #placesList .item .marker_2 {
+    background-position: 0 -56px;
+  }
+  #placesList .item .marker_3 {
+    background-position: 0 -102px;
+  }
+  #placesList .item .marker_4 {
+    background-position: 0 -148px;
+  }
+  #placesList .item .marker_5 {
+    background-position: 0 -194px;
+  }
+  #placesList .item .marker_6 {
+    background-position: 0 -240px;
+  }
+  #placesList .item .marker_7 {
+    background-position: 0 -286px;
+  }
+  #placesList .item .marker_8 {
+    background-position: 0 -332px;
+  }
+  #placesList .item .marker_9 {
+    background-position: 0 -378px;
+  }
+  #placesList .item .marker_10 {
+    background-position: 0 -423px;
+  }
+  #placesList .item .marker_11 {
+    background-position: 0 -470px;
+  }
+  #placesList .item .marker_12 {
+    background-position: 0 -516px;
+  }
+  #placesList .item .marker_13 {
+    background-position: 0 -562px;
+  }
+  #placesList .item .marker_14 {
+    background-position: 0 -608px;
+  }
+  #placesList .item .marker_15 {
+    background-position: 0 -654px;
+  }
+  #pagination {
+    margin: 10px auto;
+    text-align: center;
+  }
+  #pagination a {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #pagination .on {
+    font-weight: bold;
+    cursor: default;
+    color: #777;
+  }
+</style>

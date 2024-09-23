@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sortByAge(arr) {
+        const peoples = [];
+
+        arr.forEach((item) => {
+          arr.sort(item);
+          console.log(item.age);
+        });
+
+        // 여기에 코드를 작성하세요.
+      }
+
+      const people = [
+        { name: "John", age: 30 },
+        { name: "Anna", age: 25 },
+        { name: "Mike", age: 35 },
+      ];
+
+      console.log(sortByAge(people));
+      // [{ name: 'Anna', age: 25 }, { name: 'John', age: 30 }, { name: 'Mike', age: 35 }]
+    </script>
+  </body>
+</html>
