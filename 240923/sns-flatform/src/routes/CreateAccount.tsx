@@ -1,49 +1,16 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { auth } from "../firebase";
-
-const Wrapper = styled.div`
-  width: 420px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  padding: 50px 0;
-`;
-
-const Title = styled.h1`
-  font-size: 42px;
-  margin-bottom: 30px;
-`;
-
-const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const Input = styled.input`
-  padding: 10px 20px;
-  width: 100%;
-  border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  &[type="submit"] {
-    cursor: pointer;
-    transition: opacity 0.4s;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-`;
-
-const Error = styled.span`
-  font-weight: 600;
-  color: tomato;
-`;
+import { FirebaseError } from "firebase/app";
+import {
+  Form,
+  Input,
+  Title,
+  Wrapper,
+  Error,
+} from "../components/atuth-components";
 
 const CreateAccount = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -51,6 +18,8 @@ const CreateAccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   // 타입스크립트에서는 말이 잘 안 되는 경우.
   // type 어디 갔어?
@@ -79,15 +48,30 @@ const CreateAccount = () => {
     e.preventDefault();
     if (isLoading || name === "" || email === "" || password === "") return;
     try {
+      setIsLoading(true);
+
+      const credentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await updateProfile(credentials.user, {
+        displayName: name,
+      });
+
+      navigate("/");
+
       // create an account
       // set the name of the user
       // redirect to the home page
 
       // 왜 비동기 처리가 필요한가?
       // => 너 되면, 너 되고, 너 되면 너 되자. 이렇게
-      await createUserWithEmailAndPassword(auth, email, password);
     } catch (e) {
-      // setError();
+      if (e instanceof FirebaseError) {
+        setError(e.message);
+      }
     } finally {
       setIsLoading(false);
     }

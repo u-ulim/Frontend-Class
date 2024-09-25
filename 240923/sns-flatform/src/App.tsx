@@ -5,17 +5,39 @@ import Home from "./routes/Home";
 import Profile from "./routes/Profile";
 import Login from "./routes/Login";
 import LoadingScreen from "./components/LoadingScreen";
-import { auth } from "./firebase";
+import ProtectedRoute from "./components/ProtectedRoute";
 
+import { auth } from "./firebase";
 import CreateAccount from "./routes/CreateAccount";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const router = createBrowserRouter([
+  // portected하는 방법이 두 개
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: [
+      // {
+      //   path: "",
+      //   element: (
+      //     <ProtectedRoute>
+      //       <Home />
+      //     </ProtectedRoute>
+      //   ),
+      // },
+      // {
+      //   path: "profile",
+      //   element: (
+      //     <ProtectedRoute>
+      //       <Profile />
+      //     </ProtectedRoute>
+      //   ),
+      // },
       {
         path: "",
         element: <Home />,
