@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
-import styled from "styled-components";
 import { auth } from "../firebase";
 import { FirebaseError } from "firebase/app";
 import {
@@ -17,7 +16,7 @@ import GithubBtn from "../components/GithubBtn";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState("");
   // const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -137,15 +137,7 @@ const SetContentInputButton = styled.input`
   display: none;
 `;
 
-const Post = ({
-  id,
-  createdAt,
-  photo,
-  video,
-  post,
-  userId,
-  userName,
-}: IPost) => {
+const Post = ({ id, photo, video, post, userId, userName }: IPost) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedPost, setEditedPost] = useState(post);
   const [editedPhoto, setEditedPhoto] = useState<File | null>(null);

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import PostForm from "../components/PostForm";
 import TimeLine from "../components/TimeLine";
