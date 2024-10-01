@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   height: 100%;
   margin: 0 auto;
   padding: 50px 0;
-  border: 1px solid skyblue;
 `;
 const Menu = styled.div`
   display: flex;
