@@ -1,35 +1,35 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { createGlobalStyle } from "styled-components"
-import reset from "styled-reset"
-import Layout from './components/layout';
-import Home from './pages/Home'
-import Question from './pages/Question'
-import Result from './pages/Result'
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Question from "./pages/Question";
+import Result from "./pages/Result";
 
 //인자값으로 나무의 구조 필요 = 배열 사용
 const router = createBrowserRouter([
   {
     // 최상위 요소
-    path:"/",
+    path: "/",
     // Layout를 열겠다는 뜻
-    element:<Layout />,
-    children:[
+    element: <Layout />,
+    children: [
       {
         path: "",
-        element:<Home />
+        element: <Home />,
       },
       {
         path: "question",
-        element:<Question />
+        element: <Question />,
       },
       {
         path: "result",
-        element:<Result />
-      }
-    ]
-  }
-])
+        element: <Result />,
+      },
+    ],
+  },
+]);
 const GlobalStyle = createGlobalStyle`
   ${reset}
   @font-face {
@@ -55,15 +55,15 @@ const GlobalStyle = createGlobalStyle`
     /* width:100%; */
     height:100vh;
   }
-`
+`;
 
 const App = () => {
   return (
     <>
-      <GlobalStyle/>
-      <RouterProvider router={router}/>
+      <GlobalStyle />
+      <RouterProvider router={router} />
     </>
-  )
-}
+  );
+};
 
 export default App;

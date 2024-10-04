@@ -4,6 +4,7 @@ import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import { ResultData } from "../assets/resultData";
+import KakaoShareButton from "../components/KakaoShareButton";
 
 const Wrapper = styled.div`
   color: #fff;
@@ -47,16 +48,22 @@ const Desc = styled.div`
   margin: 10px 0;
   font-size: 20px;
   text-align: center;
+  background: crimson;
+  padding: 8px 14px;
+  border-radius: 8px;
 `;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 const Result = () => {
   const [resultData, setResultData] = useState({});
   const [searchParams] = useSearchParams();
   const test = useSearchParams();
-  console.log(searchParams);
+
   const mbti = searchParams.get("mbti");
 
-  console.log(mbti);
   const navigate = useNavigate();
 
   const handleClickButton = () => {
@@ -68,8 +75,6 @@ const Result = () => {
     setResultData(result);
   }, [mbti]);
 
-  console.log(resultData);
-
   return (
     <Wrapper>
       <Header>예비집사 판별기</Header>
@@ -79,7 +84,10 @@ const Result = () => {
           <img className="rounded-circle" src={resultData.image} />
         </LogoImg>
         <Desc>예비집사님과 찰떡궁합인 고양이는?😼{resultData.name}</Desc>
-        <Button onClick={handleClickButton}>테스트 다시시작하기</Button>
+        <ButtonGroup>
+          <Button onClick={handleClickButton}>테스트 다시시작하기</Button>
+          <KakaoShareButton data={resultData} />
+        </ButtonGroup>
       </Contents>
     </Wrapper>
   );
