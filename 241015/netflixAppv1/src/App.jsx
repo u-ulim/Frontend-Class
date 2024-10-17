@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
 import MovieDetail from "./pages/MovieDetail";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -27,6 +28,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     background-color: #000;
+    color: #fff;
   }
 `;
 
