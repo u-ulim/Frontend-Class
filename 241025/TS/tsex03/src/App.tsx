@@ -29,6 +29,8 @@ const App = () => {
   };
 
   const onAdd = () => {
+    if (toDo === "") return;
+
     setToDoList([toDo, ...toDoList]);
     setToDo("");
   };
