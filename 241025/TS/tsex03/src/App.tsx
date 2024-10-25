@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
 import ToDoItem from "./components/ToDoItem";
 import DataView from "./components/DataView";
+import TextInput from "./components/TextInput";
+import Button from "./components/Button";
 
 const Container = styled.div`
   width: 100%;
@@ -12,11 +13,6 @@ const Container = styled.div`
   align-items: center;
   background: #eee;
   justify-content: center;
-`;
-
-const TextInput = styled.input`
-  font-size: 18px;
-  padding: 8px;
 `;
 
 const mockData = [
@@ -32,10 +28,16 @@ const App = () => {
     setToDoList(toDoList.filter((item) => item !== todo));
   };
 
+  const onAdd = () => {
+    setToDoList([toDo, ...toDoList]);
+    setToDo("");
+  };
+
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      <TextInput onChange={(e) => setToDo(e.target.value)} value={toDo} />
+      <TextInput value={toDo} onChange={setToDo} />
+      <Button label={"추가"} color="#304ffe" onClick={onAdd} />
     </Container>
   );
 };
