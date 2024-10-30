@@ -1,6 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { theme } from "./theme";
+import { darktheme, ligththeme } from "./theme";
+import { ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
@@ -29,8 +33,14 @@ body {
 const App = () => {
   return (
     <>
-      <GlobalStyle />
-      <Outlet />
+      <ThemeProvider theme={ligththeme}>
+        <GlobalStyle />
+        <Outlet />
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          buttonPosition="bottom-left"
+        />
+      </ThemeProvider>
     </>
   );
 };

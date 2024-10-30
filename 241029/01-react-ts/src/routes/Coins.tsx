@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCoins } from "../api";
+import { Helmet } from "react-helmet";
 
 const Container = styled.main`
   width: 100%;
@@ -83,7 +86,7 @@ const Img = styled.img`
   margin: 0 26px;
 `;
 
-interface CoinInterface {
+export interface CoinInterface {
   id: string;
   name: string;
   symbol: string;
@@ -94,30 +97,40 @@ interface CoinInterface {
 }
 
 const Coins = () => {
-  const [coins, setCoins] = useState<CoinInterface[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [coins, setCoins] = useState<CoinInterface[]>([]);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/Divjason/coindata/refs/heads/main/coins.json"
-      );
-      const json = await response.json(); // await 키워드를 추가하여 JSON 데이터를 가져옴
-      setCoins(json.slice(0, 101));
-      setLoading(false);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await fetch(
+  //       "https://raw.githubusercontent.com/Divjason/coindata/refs/heads/main/coins.json"
+  //     );
+  //     const json = await response.json(); // await 키워드를 추가하여 JSON 데이터를 가져옴
+  //     setCoins(json.slice(0, 101));
+  //     setLoading(false);
+  //   })();
+  // }, []);
+
+  const { isLoading, data } = useQuery<CoinInterface[]>({
+    queryKey: ["allCoins"],
+    queryFn: fetchCoins,
+  });
 
   return (
     <Container>
+      <Helmet>
+        <title>Coin List</title>
+      </Helmet>
       <Header>
         <Title>Coin List</Title>
       </Header>
-      {loading ? (
+      {/* 기존에 사용하던 loading을 isLoading으로 변경 */}
+      {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
         <CoinList>
-          {coins.map((coin) => (
+          {/*기존에 data가 아닌 coins를 사용하던 것을 data로 변경*/}
+          {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               🎁 Now Rank: {coin.rank}
               <Img
