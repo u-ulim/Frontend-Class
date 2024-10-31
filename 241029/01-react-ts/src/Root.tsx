@@ -1,10 +1,14 @@
-import React from "react";
+// import React, { useState } from "react";
+
 import { Outlet } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { theme } from "./theme";
-import { darktheme, ligththeme } from "./theme";
+import { darkTheme, lightTheme } from "./theme";
 import { ThemeProvider } from "styled-components";
+
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./routes/atoms";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
@@ -31,10 +35,21 @@ body {
 }`;
 
 const App = () => {
+  // 기존
+  // const [isDark, setIsDark] = useState(false);
+  // const toggleDark = () => setIsDark((prev) => !prev);
+
+  // 리코일을 사용하기 위한 방법
+  const isDark = useRecoilValue(isDarkAtom);
+  // console.log(isDark);
+  // const toggleDark = () => setIsDark((prev) => !prev);
+
   return (
     <>
-      <ThemeProvider theme={ligththeme}>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <GlobalStyle />
+
+        {/* <Outlet context={{ isDark, toggleDark }} /> */}
         <Outlet />
         <ReactQueryDevtools
           initialIsOpen={false}
