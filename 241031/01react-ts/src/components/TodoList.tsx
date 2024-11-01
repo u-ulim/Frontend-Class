@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { set, useForm } from "react-hook-form";
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
 
 const Container = styled.div`
   width: 100%;
@@ -32,6 +32,12 @@ interface Form {
   toDo: string;
 }
 
+interface ToDo {
+  id: number;
+  text: string;
+  category: "TODO" | "DOING" | "DONE";
+}
+
 const toDoState = atom({
   key: "toDo",
   default: [],
@@ -59,8 +65,13 @@ const TodoList = () => {
   // console.log(register("todo"));
   // console.log(watch());
   const { register, handleSubmit, setValue } = useForm<Form>({});
+  const [value, modFn] = useRecoilState(toDoState);
 
-  const handleValid = () => {
+  const handleValid = ({ toDo }: Form) => {
+    setToDos((oldToDos) => [
+      { id: Date.now(), text: toDo, category: "TODO" },
+      ...oldToDos,
+    ]);
     setValue("toDo", "");
   };
 
@@ -84,17 +95,17 @@ const TodoList = () => {
       <Form onSubmit={handleSubmit(handleValid)}>
         <input
           {...register("toDo", {
-            required: "Please Write a Todo..", // 필수 필드 에러 메시지
+            required: "할 일을 입력해주세요",
           })}
           type="text"
-          placeholder="Write a ToDo.."
+          placeholder="할 일을 입력하세요..."
         />
-
-        <input type="submit" value={"ADD"} />
+        <input type="submit" value={"추가"} />
       </Form>
       <ul>
-        <li>리액트</li>
-        <li>스타벅스 가서 커피한잔</li>
+        {toDos.map((toDo) => (
+          <li key={toDo.id}>{toDo.text}</li>
+        ))}
       </ul>
     </Container>
   );
