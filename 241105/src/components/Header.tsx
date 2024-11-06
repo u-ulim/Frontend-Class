@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useScroll } from "framer-motion";
 import { Link, useMatch } from "react-router-dom";
 
-const Nav = styled.nav`
+const Nav = styled(motion.nav)`
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
-  background: ${(props) => props.theme.black.darker};
-  color: ${(props) => props.theme.white.darker};
+  /* background: ${(props) => props.theme.black.darker}; */
+  color: ${(props) => props.theme.red};
   font-size: 18px;
   position: fixed;
   top: 0;
@@ -46,7 +46,7 @@ const Item = styled.li`
   justify-content: center;
   flex-direction: column;
   &:hover {
-    color: ${(props) => props.theme.white.lighter};
+    color: ${(props) => props.theme.black.veryDark};
     cursor: pointer;
   }
 `;
@@ -59,24 +59,35 @@ const Circle = styled(motion.span)`
   margin: 0 auto;
   width: 6px;
   height: 6px;
-
-  border-radius: 50%;
   background: ${(props) => props.theme.red};
+  border-radius: 50%;
 `;
 const Search = styled.span`
-  color: ${(props) => props.theme.white.darker};
+  color: ${(props) => props.theme.red};
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 4px;
+
   svg {
-    fill: ${(props) => props.theme.white.darker};
+    transform-origin: right;
+
+    fill: ${(props) => props.theme.red};
   }
 `;
 
 const Input = styled(motion.input)`
   // 이거 좋당
   transform-origin: right;
+  background: transparent;
+  color: ${(props) => props.theme.red};
+  border: none;
+
+  /* font-size: 18px; */
+  border-bottom: 1px solid ${(props) => props.theme.white.darker};
+  &:focus {
+    outline: none;
+  }
 `;
 
 const logoVariants = {
@@ -92,12 +103,44 @@ const logoVariants = {
 const Header = () => {
   const homeMatch = useMatch("/");
   const tvMatch = useMatch("/tv"); // tv페이지 매칭 / 매칭이되면 true 안되면 false
+  const inputAnimation = useAnimation();
+  const { scrollY } = useScroll();
   const [searchOpen, setSearchOpen] = useState(false);
+  const navAnimation = useAnimation();
+
+  useEffect(() => {
+    // scrollY.onChange(() => { // 원래는 이게 되었었음
+    scrollY.on("change", () => {
+      // 지금은 이렇게 변경이 됨.
+      if (scrollY.get() > 60) {
+        navAnimation.start("scroll");
+      } else {
+        navAnimation.start("top");
+      }
+    });
+  }, [scrollY]);
+
   const openSearch = () => {
+    if (searchOpen) {
+      inputAnimation.start({
+        scaleX: 0,
+      });
+    } else {
+      inputAnimation.start({
+        scaleX: 1,
+      });
+    }
+
     setSearchOpen((prev) => !prev);
   };
+
+  const navVariants = {
+    top: { backgroundColor: "rgba(0, 0, 0, 0)" },
+    scroll: { backgroundColor: "rgba(0, 0, 0, 1)" },
+  };
+
   return (
-    <Nav>
+    <Nav variants={navVariants} animate={navAnimation} initial={"top"}>
       <Col>
         <Logo
           xmlns="http://www.w3.org/2000/svg"
@@ -128,14 +171,10 @@ const Header = () => {
         </Items>
       </Col>
       <Col>
-        <Search onClick={openSearch}>
-          <Input
-            type="text"
-            placeholder="Search..."
-            animate={{ scaleX: searchOpen ? 1 : 0 }}
-          />
+        <Search>
           <motion.svg
-            animate={{ x: searchOpen ? -194 : 0 }}
+            onClick={openSearch}
+            animate={{ x: searchOpen ? 0 : 174 }}
             transition={{ type: "linear" }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -144,6 +183,13 @@ const Header = () => {
           >
             <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
           </motion.svg>
+          <Input
+            type="text"
+            transition={{ type: "linear" }}
+            placeholder="Search..."
+            animate={inputAnimation}
+            initial={{ scaleX: 0 }}
+          />
         </Search>
       </Col>
     </Nav>
