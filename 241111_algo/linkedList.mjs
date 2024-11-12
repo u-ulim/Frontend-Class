@@ -12,9 +12,10 @@
 
 class Node {
   // next 는 디폴트 값으로 null을 가지고 있다. 없으면 null로 들어감
-  constructor(data, next = null) {
+  constructor(data, next = null, prev = null) {
     this.data = data;
     this.next = next;
+    this.prev = prev;
   }
 }
 
@@ -36,6 +37,7 @@ class LinkedList {
     // head: 연결 리스트의 첫 번째 노드를 가리키는 포인터
     // 초기에는 비어있으므로 null로 설정
     this.head = null;
+    this.tail = null;
     // count: 현재 리스트에 있는 노드의 총 개수를 추적
     this.count = 0;
   }
@@ -83,8 +85,16 @@ class LinkedList {
       // 3-1. 첫 번째 위치에 삽입하는 경우
       // 새 노드의 next를 현재 head로 설정
       newNode.next = this.head;
+      if (this.head !== null) {
+        this.head.prev = newNode;
+      }
       // head를 새 노드로 변경
       this.head = newNode;
+    } else if (index === this.count) {
+      // 3-2. 마지막 위치에 삽입하는 경우
+      newNode.next = null;
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
     } else {
       // 3-2. 중간이나 끝에 삽입하는 경우
       let currentNode = this.head;
@@ -97,9 +107,15 @@ class LinkedList {
       // 새 노드의 next를 현재 노드의 다음 노드로 연결
       // (이전 연결을 끊기 전에 저장)
       newNode.next = currentNode.next;
+      newNode.prev = currentNode;
+      currentNode.next.prev = newNode;
 
       // 현재 노드의 next를 새 노드로 연결
-      currentNode.next = newNode;
+      newNode.next.prev = newNode;
+    }
+
+    if (newNode.next === null) {
+      this.tail = newNode;
     }
 
     // 노드 개수 증가
@@ -120,12 +136,18 @@ class LinkedList {
     // 2. 첫 번째 노드를 삭제하는 경우 (index === 0)
     if (index === 0) {
       let deletedNode = this.head; // 삭제할 노드 저장
-      this.head = this.head.next; // head를 두 번째 노드로 변경
+      if (this.head.next === null) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = this.head.next;
+        this.head.prev = null;
+      }
+      // this.head = this.head.next; // head를 두 번째 노드로 변경
       this.count--; // 전체 노드 개수 감소
       return deletedNode; // 삭제된 노드 반환
-    }
-    // 3. 중간이나 마지막 노드를 삭제하는 경우
-    else {
+    } else if (index === this.count - 1) {
+      let deletedNode = this.tail;
       // 삭제하려는 노드의 이전 노드까지 이동
       for (let i = 0; i < index - 1; i++) {
         currentNode = currentNode.next;
@@ -133,10 +155,12 @@ class LinkedList {
 
       // 예: [1] -> [2] -> [3] 에서 [2]를 삭제하는 경우
       let deletedNode = currentNode.next; // 삭제할 노드 [2] 저장
+      currentNode.next.prev = currentNode;
       currentNode.next = currentNode.next.next; // [1]의 next를 [3]으로 연결
       this.count--; // 전체 노드 개수 감소
       return deletedNode; // 삭제된 노드 반환
     }
+    // 3. 중간이나 마지막 노드를 삭제하는 경우
   }
 
   deleteLast() {
