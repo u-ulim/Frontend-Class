@@ -1,12 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Searchbar from "../../components/searchbar";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <div>
       <Searchbar />
       {children}
-    </>
+    </div>
   );
 };
 

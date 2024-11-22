@@ -1,7 +1,7 @@
 import React from "react";
 
 const ServerComponent = () => {
-  console.log("ServerComponent 컴포넌트 실행!");
+  console.log("서버컴포넌트!");
   return <div></div>;
 };
 
